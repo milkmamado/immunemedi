@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Building2, Leaf, Globe } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 
-const strengths = [
+const strengths: { icon: LucideIcon; title: string; locations?: string; subtitle?: string; desc: string }[] = [
   {
-    icon: "🏥",
+    icon: Building2,
     title: "서울 4개 지점 운영",
     locations: "강서 · 광명 · 신촌 · 성동",
     desc: "검증된 네트워크, 탄탄한 임상 인프라",
