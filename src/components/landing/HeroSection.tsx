@@ -24,7 +24,7 @@ const HeroSection = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/20 border border-gold/30 mb-8">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             <span className="text-sm font-medium text-gold-light">
-              한국 최고의 암 회복 통합 케어
+              Care You Need, Care You Trust
             </span>
           </div>
 
