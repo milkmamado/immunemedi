@@ -99,7 +99,9 @@ const RecoveryLifeSection = () => {
               onClick={() => { setModalIndex(i); setModalOpen(true); }}
             >
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-2xl">{p.icon}</span>
+                <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
+                  <p.icon className="w-4.5 h-4.5 text-gold" />
+                </div>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-gold-light text-foreground font-medium">
                   {p.freq}
                 </span>

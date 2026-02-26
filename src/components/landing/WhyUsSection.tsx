@@ -59,7 +59,9 @@ const WhyUsSection = () => {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="bg-card rounded-2xl p-8 shadow-card hover:shadow-elevated transition-shadow duration-300 border border-border"
             >
-              <span className="text-5xl mb-6 block">{s.icon}</span>
+              <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+                <s.icon className="w-7 h-7 text-gold" />
+              </div>
               <h3 className="font-serif text-xl font-bold text-foreground mb-2">
                 {s.title}
               </h3>

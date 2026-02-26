@@ -58,8 +58,8 @@ const VipCareSection = () => {
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
                   className="flex items-start gap-4"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gold-light flex items-center justify-center flex-shrink-0 text-2xl">
-                    {s.icon}
+                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <s.icon className="w-5 h-5 text-gold" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">{s.title}</h3>

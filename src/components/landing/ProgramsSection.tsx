@@ -128,7 +128,9 @@ const ProgramsSection = () => {
                     <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </div>
-                <div className="absolute bottom-3 left-3 text-3xl">{t.icon}</div>
+                <div className="absolute bottom-3 left-3 w-10 h-10 rounded-lg bg-card/80 backdrop-blur-sm flex items-center justify-center">
+                  <t.icon className="w-5 h-5 text-gold" />
+                </div>
               </div>
 
               <div className="p-5">

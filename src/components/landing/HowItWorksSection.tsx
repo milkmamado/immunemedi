@@ -71,8 +71,8 @@ const HowItWorksSection = () => {
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 className="relative text-center"
               >
-                <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-gold text-gold-foreground flex items-center justify-center text-2xl mx-auto mb-5 shadow-gold">
-                  {s.icon}
+                <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-gold text-gold-foreground flex items-center justify-center mx-auto mb-5 shadow-gold">
+                  <s.icon className="w-7 h-7" />
                 </div>
                 <div className="text-xs font-bold text-gold tracking-widest mb-2">
                   STEP {s.step}
