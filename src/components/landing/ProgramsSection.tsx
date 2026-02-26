@@ -40,7 +40,7 @@ const treatments = [
     imageAlt: "고압산소치료 챔버",
   },
   {
-    icon: "🤲",
+    icon: Hand,
     title: "도수치료",
     subtitle: "Manual Therapy",
     items: ["전문 치료사 시행"],
