@@ -29,7 +29,8 @@ const KoreanLanding = () => {
       <footer className="py-8 bg-foreground text-background/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="font-serif text-lg font-bold text-background/80 mb-2">면력한방병원</p>
-          <p className="text-sm">MYEONGRYEOK KOREAN MEDICINE HOSPITAL</p>
+          <p className="text-sm">Myeongryeok Korean Medicine Hospital</p>
+          <p className="text-xs text-background/40 mt-1">Care You Need, Care You Trust</p>
           <p className="text-xs mt-4">© 2026 면력한방병원. All rights reserved.</p>
         </div>
       </footer>

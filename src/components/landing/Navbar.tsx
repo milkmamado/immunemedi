@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import logoSvg from "@/assets/logo.svg";
 
 const navItems = [
   { label: "소개", href: "#why-us" },
