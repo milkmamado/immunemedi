@@ -22,7 +22,7 @@ const treatments = [
     imageAlt: "한약 처방 시설",
   },
   {
-    icon: "🔥",
+    icon: Flame,
     title: "고주파 온열 암치료",
     subtitle: "Hyperthermia",
     items: ["13.56MHz 고주파"],
