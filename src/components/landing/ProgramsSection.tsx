@@ -58,7 +58,7 @@ const treatments = [
     imageAlt: "면역 주사 치료",
   },
   {
-    icon: "📍",
+    icon: Target,
     title: "침·뜸·한방 치료",
     subtitle: "Acupuncture & Moxibustion",
     items: ["전통 한방"],
