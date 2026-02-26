@@ -12,7 +12,7 @@ const strengths: { icon: LucideIcon; title: string; locations?: string; subtitle
     desc: "검증된 네트워크, 탄탄한 임상 인프라",
   },
   {
-    icon: "🌿",
+    icon: Leaf,
     title: "한방·양방 통합 케어",
     subtitle: "한 병원에서 모두 가능",
     desc: "한약 · 침 · 온열치료 · 고압산소 · 도수치료",
