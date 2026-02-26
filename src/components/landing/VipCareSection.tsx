@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { UserCheck, Languages, Car, Hotel } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import ImageModal from "./ImageModal";
 import vipRoomImg from "@/assets/vip-room.jpg";
 import facilityLobby from "@/assets/facility-lobby.jpg";
 import heroHospital from "@/assets/hero-hospital.jpg";
 
-const services = [
-  { icon: "👨‍⚕️", title: "전담 담당의", desc: "입원부터 퇴원까지 1:1 전담 한의사 배정" },
-  { icon: "🗣️", title: "전담 통역사", desc: "영어 · 베트남어 등 다국어 — 진료·일상 전담" },
-  { icon: "🚘", title: "공항 픽업", desc: "인천·김포공항 → 병원 전용 차량 운행" },
-  { icon: "🏨", title: "보호자 숙박 연계", desc: "병원 인근 숙소 직접 예약 연결" },
+const services: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: UserCheck, title: "전담 담당의", desc: "입원부터 퇴원까지 1:1 전담 한의사 배정" },
+  { icon: Languages, title: "전담 통역사", desc: "영어 · 베트남어 등 다국어 — 진료·일상 전담" },
+  { icon: Car, title: "공항 픽업", desc: "인천·김포공항 → 병원 전용 차량 운행" },
+  { icon: Hotel, title: "보호자 숙박 연계", desc: "병원 인근 숙소 직접 예약 연결" },
 ];
 
 const galleryImages = [
