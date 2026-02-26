@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { FileBarChart } from "lucide-react";
 
 const stats = [
   { value: "50,000+", label: "누적 치료사례", sub: "Cases Treated" },
