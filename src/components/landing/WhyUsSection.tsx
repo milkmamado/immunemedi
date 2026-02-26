@@ -18,7 +18,7 @@ const strengths: { icon: LucideIcon; title: string; locations?: string; subtitle
     desc: "한약 · 침 · 온열치료 · 고압산소 · 도수치료",
   },
   {
-    icon: "🌍",
+    icon: Globe,
     title: "해외 환자 전담 시스템",
     subtitle: "원스톱 서비스",
     desc: "통역 · 전담의 · 픽업 · 숙박 — 모두 원스톱으로",
