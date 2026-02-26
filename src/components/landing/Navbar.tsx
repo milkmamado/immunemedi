@@ -35,13 +35,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a href="#" className="flex flex-col">
-            <span className={`font-serif text-lg font-bold tracking-tight transition-colors ${scrolled ? 'text-primary' : 'text-primary-foreground'}`}>
-              면력한방병원
-            </span>
-            <span className={`text-[10px] tracking-[0.2em] uppercase transition-colors ${scrolled ? 'text-muted-foreground' : 'text-primary-foreground/70'}`}>
-              Myeongryeok Hospital
-            </span>
+          <a href="#" className="flex items-center">
+            <img
+              src={logoSvg}
+              alt="면력한방병원 - Myeongryeok Korean Medicine Hospital"
+              className={`h-10 lg:h-12 w-auto transition-all ${scrolled ? '' : 'brightness-0 invert'}`}
+            />
           </a>
 
           {/* Desktop nav */}
