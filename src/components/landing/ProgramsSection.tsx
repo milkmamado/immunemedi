@@ -31,7 +31,7 @@ const treatments = [
     imageAlt: "고주파 온열 암치료 장비",
   },
   {
-    icon: "💨",
+    icon: Wind,
     title: "고압산소치료 (HBOT)",
     subtitle: "Hyperbaric Oxygen",
     items: ["1.5~3기압 고순도 산소"],
