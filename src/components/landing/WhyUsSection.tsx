@@ -1,22 +1,24 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Building2, Leaf, Globe } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 
-const strengths = [
+const strengths: { icon: LucideIcon; title: string; locations?: string; subtitle?: string; desc: string }[] = [
   {
-    icon: "🏥",
+    icon: Building2,
     title: "서울 4개 지점 운영",
     locations: "강서 · 광명 · 신촌 · 성동",
     desc: "검증된 네트워크, 탄탄한 임상 인프라",
   },
   {
-    icon: "🌿",
+    icon: Leaf,
     title: "한방·양방 통합 케어",
     subtitle: "한 병원에서 모두 가능",
     desc: "한약 · 침 · 온열치료 · 고압산소 · 도수치료",
   },
   {
-    icon: "🌍",
+    icon: Globe,
     title: "해외 환자 전담 시스템",
     subtitle: "원스톱 서비스",
     desc: "통역 · 전담의 · 픽업 · 숙박 — 모두 원스톱으로",
@@ -57,7 +59,9 @@ const WhyUsSection = () => {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="bg-card rounded-2xl p-8 shadow-card hover:shadow-elevated transition-shadow duration-300 border border-border"
             >
-              <span className="text-5xl mb-6 block">{s.icon}</span>
+              <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+                <s.icon className="w-7 h-7 text-gold" />
+              </div>
               <h3 className="font-serif text-xl font-bold text-foreground mb-2">
                 {s.title}
               </h3>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Leaf, Flame, Wind, Hand, Syringe, Target } from "lucide-react";
 import ImageModal from "./ImageModal";
 
 import treatHerbal from "@/assets/treat-herbal.jpg";
@@ -12,7 +13,7 @@ import treatAcupuncture from "@/assets/treat-acupuncture.jpg";
 
 const treatments = [
   {
-    icon: "🌿",
+    icon: Leaf,
     title: "한약 처방",
     subtitle: "Herbal Medicine",
     items: ["면역플러스", "항암플러스", "신종단"],
@@ -21,7 +22,7 @@ const treatments = [
     imageAlt: "한약 처방 시설",
   },
   {
-    icon: "🔥",
+    icon: Flame,
     title: "고주파 온열 암치료",
     subtitle: "Hyperthermia",
     items: ["13.56MHz 고주파"],
@@ -30,7 +31,7 @@ const treatments = [
     imageAlt: "고주파 온열 암치료 장비",
   },
   {
-    icon: "💨",
+    icon: Wind,
     title: "고압산소치료 (HBOT)",
     subtitle: "Hyperbaric Oxygen",
     items: ["1.5~3기압 고순도 산소"],
@@ -39,7 +40,7 @@ const treatments = [
     imageAlt: "고압산소치료 챔버",
   },
   {
-    icon: "🤲",
+    icon: Hand,
     title: "도수치료",
     subtitle: "Manual Therapy",
     items: ["전문 치료사 시행"],
@@ -48,7 +49,7 @@ const treatments = [
     imageAlt: "도수치료 시행",
   },
   {
-    icon: "💉",
+    icon: Syringe,
     title: "미슬토·면역 주사",
     subtitle: "Mistletoe & Immune IV",
     items: ["NK세포 활성화"],
@@ -57,7 +58,7 @@ const treatments = [
     imageAlt: "면역 주사 치료",
   },
   {
-    icon: "📍",
+    icon: Target,
     title: "침·뜸·한방 치료",
     subtitle: "Acupuncture & Moxibustion",
     items: ["전통 한방"],
@@ -127,7 +128,9 @@ const ProgramsSection = () => {
                     <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </div>
-                <div className="absolute bottom-3 left-3 text-3xl">{t.icon}</div>
+                <div className="absolute bottom-3 left-3 w-10 h-10 rounded-lg bg-card/80 backdrop-blur-sm flex items-center justify-center">
+                  <t.icon className="w-5 h-5 text-gold" />
+                </div>
               </div>
 
               <div className="p-5">

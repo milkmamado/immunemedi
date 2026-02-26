@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { FileBarChart } from "lucide-react";
 
 const stats = [
   { value: "50,000+", label: "누적 치료사례", sub: "Cases Treated" },
@@ -99,7 +100,7 @@ const EvidenceSection = () => {
         >
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0">
-              <span className="text-2xl">📊</span>
+              <FileBarChart className="w-6 h-6 text-gold" />
             </div>
             <div>
               <h4 className="font-serif text-xl font-bold text-primary-foreground mb-2">

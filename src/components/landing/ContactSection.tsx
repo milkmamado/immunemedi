@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { MapPin, Clock } from "lucide-react";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -50,13 +51,13 @@ const ContactSection = () => {
           <div className="p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10">
             <div className="grid sm:grid-cols-2 gap-8">
               <div>
-                <h4 className="font-semibold text-primary-foreground mb-2">📍 위치</h4>
+                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2"><MapPin className="w-4 h-4 text-gold" /> 위치</h4>
                 <p className="text-sm text-primary-foreground/60">
                   서울특별시 (강서 · 광명 · 신촌 · 성동)
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-primary-foreground mb-2">🕐 운영시간</h4>
+                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2"><Clock className="w-4 h-4 text-gold" /> 운영시간</h4>
                 <p className="text-sm text-primary-foreground/60">
                   평일 09:00–20:00 | 주말·공휴일 09:00–15:00 KST
                 </p>

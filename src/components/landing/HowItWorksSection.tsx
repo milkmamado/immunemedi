@@ -1,36 +1,37 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { MessageCircle, ClipboardList, Hospital, BarChart3, Globe, type LucideIcon } from "lucide-react";
 
-const steps = [
+const steps: { step: string; title: string; desc: string; icon: LucideIcon }[] = [
   {
     step: "01",
     title: "온라인 상담",
     desc: "카카오톡·LINE으로 증상·수술 이력 전달\n통역사가 함께 진행",
-    icon: "💬",
+    icon: MessageCircle,
   },
   {
     step: "02",
     title: "입원 전 프로그램 설계",
     desc: "의료진이 자료 검토 후\n맞춤 회복 계획 수립",
-    icon: "📋",
+    icon: ClipboardList,
   },
   {
     step: "03",
     title: "입원 & 치료 시작",
     desc: "공항 픽업 후 바로 입원\n전담의 배정",
-    icon: "🏥",
+    icon: Hospital,
   },
   {
     step: "04",
     title: "경과 모니터링 & 조정",
     desc: "정기 점검\n처방 최적화",
-    icon: "📊",
+    icon: BarChart3,
   },
   {
     step: "05",
     title: "퇴원 & 원격 사후관리",
     desc: "귀국 후에도\n원격 상담으로 지속 관리",
-    icon: "🌐",
+    icon: Globe,
   },
 ];
 
@@ -71,8 +72,8 @@ const HowItWorksSection = () => {
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 className="relative text-center"
               >
-                <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-gold text-gold-foreground flex items-center justify-center text-2xl mx-auto mb-5 shadow-gold">
-                  {s.icon}
+                <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-gold text-gold-foreground flex items-center justify-center mx-auto mb-5 shadow-gold">
+                  <s.icon className="w-7 h-7" />
                 </div>
                 <div className="text-xs font-bold text-gold tracking-widest mb-2">
                   STEP {s.step}
