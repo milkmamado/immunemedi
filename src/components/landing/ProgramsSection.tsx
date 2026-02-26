@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Leaf, Flame, Wind, Hand, Syringe, Target } from "lucide-react";
 import ImageModal from "./ImageModal";
 
 import treatHerbal from "@/assets/treat-herbal.jpg";
@@ -12,7 +13,7 @@ import treatAcupuncture from "@/assets/treat-acupuncture.jpg";
 
 const treatments = [
   {
-    icon: "🌿",
+    icon: Leaf,
     title: "한약 처방",
     subtitle: "Herbal Medicine",
     items: ["면역플러스", "항암플러스", "신종단"],
