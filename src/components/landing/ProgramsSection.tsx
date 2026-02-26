@@ -49,7 +49,7 @@ const treatments = [
     imageAlt: "도수치료 시행",
   },
   {
-    icon: "💉",
+    icon: Syringe,
     title: "미슬토·면역 주사",
     subtitle: "Mistletoe & Immune IV",
     items: ["NK세포 활성화"],
