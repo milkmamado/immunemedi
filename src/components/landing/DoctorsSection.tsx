@@ -111,9 +111,6 @@ const DoctorsSection = () => {
           ))}
         </div>
 
-        <p className="text-center text-sm text-muted-foreground italic mb-16">
-          ※ 원장 약력·사진 제공 시 실제 프로필로 교체 가능
-        </p>
 
         {/* Hospital Facilities */}
         <motion.div
