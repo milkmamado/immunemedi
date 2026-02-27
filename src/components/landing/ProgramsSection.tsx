@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ClipboardCheck, TestTube, Stethoscope, Microscope } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import ImageModal from "./ImageModal";
 import { useIsMobile } from "@/hooks/use-mobile";
 
