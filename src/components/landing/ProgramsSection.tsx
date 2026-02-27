@@ -47,7 +47,7 @@ const orientalTreatments: Treatment[] = [
   { title: "면역플러스", desc: "황기 부정단 처방으로 종양 면역 세포 활성화를 촉진, 골수기능 개선 및 종양 증식 억제", image: "/placeholder.svg" },
   { title: "항암플러스", desc: "옻나무 추출 천연물질로 루시올 함량을 높여 항암 효과 증진", image: "/placeholder.svg" },
   { title: "청간플러스", desc: "과산화지질 생성을 감소시켜 간 손상을 보호하고 간 기능을 개선", image: "/placeholder.svg" },
-  { title: "면역약침", desc: "멸균 한약재를 침으로 직접 투여하여 항암 부작용을 완화", image: "/placeholder.svg" },
+  { title: "면역약침", desc: "멸균된 순수 한약재를 침으로 직접 투여하여 약과 침의 동시 효과, 항암 부작용 완화", image: "/placeholder.svg" },
 ];
 
 const diagnostics: Treatment[] = [
