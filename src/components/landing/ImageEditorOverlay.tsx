@@ -79,7 +79,7 @@ const ImageEditorOverlay = ({ treatmentKey, defaultSrc, onClose }: ImageEditorOv
         </div>
 
         {/* Preview */}
-        <div className="relative w-full h-48 bg-muted rounded-xl overflow-hidden border border-border">
+        <div className="relative w-full aspect-square max-h-80 bg-muted rounded-xl overflow-hidden border border-border">
           {settings.src ? (
             <img
               src={settings.src}
