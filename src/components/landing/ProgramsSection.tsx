@@ -9,6 +9,7 @@ import treatHyperthermia from "@/assets/treat-hyperthermia.jpg";
 import treatHbot from "@/assets/treat-hbot.jpg";
 import treatManual from "@/assets/treat-manual.jpg";
 import treatImmune from "@/assets/treat-immune.jpg";
+import treatMistletoe from "@/assets/treat-mistletoe.jpg";
 
 /* ── Treatment data ── */
 
