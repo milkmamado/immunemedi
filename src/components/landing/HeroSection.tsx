@@ -50,9 +50,6 @@ const HeroSection = () => {
             </a>
           </div>
 
-          <p className="mt-6 text-sm text-primary-foreground/60">
-            24시간 내 답변 &nbsp;|&nbsp; WhatsApp · LINE · Telegram · WeChat 상담 가능
-          </p>
         </motion.div>
       </div>
 
