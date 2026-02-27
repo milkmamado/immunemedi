@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>면력한방병원 — 디자인 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 62.5%; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f5f5f5;
+  color: #3e3f43;
+  padding: 5.6rem 3.2rem 8rem;
+}
+.wrap { max-width: 960px; margin: 0 auto; }
+
+/* 헤더 */
+.header { margin-bottom: 5.6rem; padding-bottom: 3.2rem; border-bottom: 2px solid #20345f; }
+.header__en { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; letter-spacing: 0.3em; text-transform: uppercase; color: #d29565; margin-bottom: 1rem; }
+.header__title { font-size: 3rem; font-weight: 700; color: #20345f; margin-bottom: 0.8rem; }
+.header__desc { font-size: 1.3rem; color: #848484; font-weight: 300; }
+
+/* 섹션 */
+.section { margin-bottom: 5.6rem; }
+.section__title {
+  font-size: 1.1rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #20345f; margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section__title::after { content: ''; flex: 1; height: 1px; background: #b2c7db; }
+
+/* 컬러 그리드 */
+.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.2rem; }
+.color-card { border-radius: 1rem; overflow: hidden; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+.swatch { height: 80px; }
+.info { padding: 1rem 1.2rem; }
+.info__name { font-size: 1.2rem; font-weight: 600; color: #3e3f43; margin-bottom: 0.2rem; }
+.info__hex { font-family: 'Courier New', monospace; font-size: 1.1rem; color: #929394; }
+.info__var { font-size: 1rem; color: #bdbdbd; margin-top: 0.2rem; }
+.info__role { font-size: 1.1rem; color: #d29565; font-weight: 500; margin-top: 0.4rem; }
+
+/* 폰트 */
+.font-card { background: #fff; border-radius: 1.2rem; padding: 3.2rem; box-shadow: 0 1px 6px rgba(0,0,0,0.08); margin-bottom: 1.6rem; }
+.font-label { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #d29565; margin-bottom: 2rem; }
+.font-row { display: flex; align-items: baseline; gap: 2rem; padding: 1.2rem 0; border-bottom: 1px solid #f5f5f5; }
+.font-row:last-child { border-bottom: none; }
+.font-meta { font-size: 1.1rem; color: #bdbdbd; min-width: 11rem; flex-shrink: 0; }
+.font-sample { }
+
+/* 적용 예시 */
+.usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+.usage-card { border-radius: 1.2rem; padding: 2.8rem; }
+.usage-label { font-size: 1rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.usage-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.8rem; }
+.usage-body { font-size: 1.2rem; line-height: 1.7; opacity: 0.75; }
+
+/* CTA 버튼 */
+.btn-row { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.btn { padding: 1.1rem 2.4rem; border-radius: 0.6rem; font-family: 'Noto Sans KR', sans-serif; font-size: 1.3rem; font-weight: 600; border: none; cursor: default; }
+
+/* 교체 노트 */
+.note { background: #fff8f0; border-left: 4px solid #d29565; border-radius: 0 0.8rem 0.8rem 0; padding: 1.6rem 2rem; font-size: 1.3rem; color: #3e3f43; }
+.note strong { color: #ba653c; }
+
+@media (max-width: 640px) {
+  .usage-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <p class="header__en">Myeongryeok Korean Medicine Hospital</p>
+    <h1 class="header__title">컬러 & 폰트 가이드</h1>
+    <p class="header__desc">style.css 기반 공식 추출 — 해외 랜딩 페이지 제작 기준 / 2026.02</p>
+  </header>
+
+
+  <!-- ① Primary -->
+  <section class="section">
+    <h2 class="section__title">Primary — 블루 계열</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="swatch" style="background:#20345f;"></div>
+        <div class="info">
+          <div class="info__name">Primary 900</div>
+          <div class="info__hex">#20345F</div>
+          <div class="info__var">--clr-primary-900</div>
+          <div class="info__role">헤더·섹션 BG·주요 텍스트</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#253d67;"></div>
+        <div class="info">
+          <div class="info__name">Primary 700</div>
+          <div class="info__hex">#253D67</div>
+          <div class="info__var">--clr-primary-700</div>
+          <div class="info__role">헤딩·네비게이션·버튼</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#29467b;"></div>
+        <div class="info">
+          <div class="info__name">Primary 600</div>
+          <div class="info__hex">#29467B</div>
+          <div class="info__var">--clr-primary-600</div>
+          <div class="info__role">버튼 Hover</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#385b98;"></div>
+        <div class="info">
+          <div class="info__name">Primary 500</div>
+          <div class="info__hex">#385B98</div>
+          <div class="info__var">--clr-primary-500</div>
+          <div class="info__role">버튼·링크·아이콘</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#e9eff6;"></div>
+        <div class="info">
+          <div class="info__name">Primary 300</div>
+          <div class="info__hex">#E9EFF6</div>
+          <div class="info__var">--clr-primary-300</div>
+          <div class="info__role">연한 배경·배지 BG</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#b2c7db;"></div>
+        <div class="info">
+          <div class="info__name">Primary 100</div>
+          <div class="info__hex">#B2C7DB</div>
+          <div class="info__var">--clr-primary-100</div>
+          <div class="info__role">구분선·테두리</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#f5f5f5; border:1px solid #e0e0e0;"></div>
+        <div class="info">
+          <div class="info__name">Primary 50</div>
+          <div class="info__hex">#F5F5F5</div>
+          <div class="info__var">--clr-primary-50</div>
+          <div class="info__role">카드·섹션 BG</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ② Secondary -->
+  <section class="section">
+    <h2 class="section__title">Secondary — 웜 골드·브라운 계열 (포인트 컬러)</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="swatch" style="background:#ba653c;"></div>
+        <div class="info">
+          <div class="info__name">Secondary 500</div>
+          <div class="info__hex">#BA653C</div>
+          <div class="info__var">--clr-secondary-500</div>
+          <div class="info__role">강한 포인트·Hover</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#d29565;"></div>
+        <div class="info">
+          <div class="info__name">Secondary 400 ★</div>
+          <div class="info__hex">#D29565</div>
+          <div class="info__var">--clr-secondary-400</div>
+          <div class="info__role">메인 포인트·강조·구분선</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#f2e3d0;"></div>
+        <div class="info">
+          <div class="info__name">Secondary 300</div>
+          <div class="info__hex">#F2E3D0</div>
+          <div class="info__var">--clr-secondary-300</div>
+          <div class="info__role">카드 배경·연한 포인트</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#fbf7f1; border:1px solid #e0e0e0;"></div>
+        <div class="info">
+          <div class="info__name">Secondary 50</div>
+          <div class="info__hex">#FBF7F1</div>
+          <div class="info__var">--clr-secondary-50</div>
+          <div class="info__role">크림 배경·따뜻한 섹션</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ③ Gray -->
+  <section class="section">
+    <h2 class="section__title">Gray — 텍스트·보조 계열</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="swatch" style="background:#3e3f43;"></div>
+        <div class="info">
+          <div class="info__name">Gray 900</div>
+          <div class="info__hex">#3E3F43</div>
+          <div class="info__var">--clr-gray-900</div>
+          <div class="info__role">주요 본문 텍스트</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#67686c;"></div>
+        <div class="info">
+          <div class="info__name">Gray 800</div>
+          <div class="info__hex">#67686C</div>
+          <div class="info__var">--clr-gray-800</div>
+          <div class="info__role">캡션·날짜</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#848484;"></div>
+        <div class="info">
+          <div class="info__name">Gray 700</div>
+          <div class="info__hex">#848484</div>
+          <div class="info__var">--clr-gray-700</div>
+          <div class="info__role">서브 텍스트</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#929394;"></div>
+        <div class="info">
+          <div class="info__name">Gray 600</div>
+          <div class="info__hex">#929394</div>
+          <div class="info__var">--clr-gray-600</div>
+          <div class="info__role">보조 설명 텍스트</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#bdbdbd;"></div>
+        <div class="info">
+          <div class="info__name">Gray 500</div>
+          <div class="info__hex">#BDBDBD</div>
+          <div class="info__var">--clr-gray-500</div>
+          <div class="info__role">플레이스홀더</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#d2d2d2;"></div>
+        <div class="info">
+          <div class="info__name">Gray 400</div>
+          <div class="info__hex">#D2D2D2</div>
+          <div class="info__var">--clr-gray-400</div>
+          <div class="info__role">비활성 테두리</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ④ CTA -->
+  <section class="section">
+    <h2 class="section__title">CTA 버튼 컬러</h2>
+    <div class="color-grid" style="margin-bottom:2rem;">
+      <div class="color-card">
+        <div class="swatch" style="background:#FEE500;"></div>
+        <div class="info">
+          <div class="info__name">KakaoTalk</div>
+          <div class="info__hex">#FEE500</div>
+          <div class="info__role">텍스트: #3C1E1E</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#00B900;"></div>
+        <div class="info">
+          <div class="info__name">LINE</div>
+          <div class="info__hex">#00B900</div>
+          <div class="info__role">텍스트: #FFFFFF</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="swatch" style="background:#253d67;"></div>
+        <div class="info">
+          <div class="info__name">Primary 버튼</div>
+          <div class="info__hex">#253D67</div>
+          <div class="info__role">텍스트: #FFFFFF</div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <div class="btn" style="background:#253d67; color:#fff;">Primary CTA</div>
+      <div class="btn" style="background:#FEE500; color:#3C1E1E;">💬 카카오톡 상담</div>
+      <div class="btn" style="background:#00B900; color:#fff;">💬 LINE 문의</div>
+      <div class="btn" style="background:transparent; color:#253d67; border:2px solid #253d67;">Outline</div>
+    </div>
+  </section>
+
+
+  <!-- ⑤ 폰트 -->
+  <section class="section">
+    <h2 class="section__title">폰트 시스템</h2>
+    <div class="font-card">
+      <div class="font-label">한국어 — Pretendard (--font-family-title / body)</div>
+      <div class="font-row">
+        <span class="font-meta">900 · Display</span>
+        <span class="font-sample" style="font-size:3.6rem; font-weight:900; color:#20345f; font-family:'Noto Sans KR',sans-serif;">암 회복의 시작</span>
+      </div>
+      <div class="font-row">
+        <span class="font-meta">700 · H1</span>
+        <span class="font-sample" style="font-size:2.6rem; font-weight:700; color:#20345f; font-family:'Noto Sans KR',sans-serif;">면력한방병원</span>
+      </div>
+      <div class="font-row">
+        <span class="font-meta">500 · H2</span>
+        <span class="font-sample" style="font-size:2rem; font-weight:500; color:#3e3f43; font-family:'Noto Sans KR',sans-serif;">통합 면역 암 회복 치료</span>
+      </div>
+      <div class="font-row">
+        <span class="font-meta">400 · Body</span>
+        <span class="font-sample" style="font-size:1.5rem; font-weight:400; color:#67686c; font-family:'Noto Sans KR',sans-serif;">어디서 수술을 받으셨든, 회복은 면력에서 시작됩니다.</span>
+      </div>
+      <div class="font-row">
+        <span class="font-meta">300 · Caption</span>
+        <span class="font-sample" style="font-size:1.3rem; font-weight:300; color:#929394; font-family:'Noto Sans KR',sans-serif;">치료 효과는 개인에 따라 다를 수 있습니다.</span>
+      </div>
+    </div>
+    <div class="font-card">
+      <div class="font-label">영문 장식체 — Cormorant Garamond (--font-en-text) · 헤딩·타이틀 전용</div>
+      <div class="font-row">
+        <span class="font-meta">600 · Display</span>
+        <span class="font-sample" style="font-size:4rem; font-weight:600; color:#20345f; font-family:'Cormorant Garamond',serif;">Recover With Us</span>
+      </div>
+      <div class="font-row">
+        <span class="font-meta">400i · Accent</span>
+        <span class="font-sample" style="font-size:3rem; font-style:italic; color:#d29565; font-family:'Cormorant Garamond',serif;">Wherever You Had Surgery</span>
+      </div>
+      <div class="font-row">
+        <span class="font-meta">400 · Sub</span>
+        <span class="font-sample" style="font-size:1.8rem; color:#3e3f43; font-family:'Cormorant Garamond',serif;">Korea's Premier Integrative Cancer Recovery</span>
+      </div>
+      <div class="font-row">
+        <span class="font-meta">Label</span>
+        <span class="font-sample" style="font-size:1.1rem; letter-spacing:0.35em; text-transform:uppercase; color:#d29565; font-family:'Cormorant Garamond',serif;">Clinical Evidence</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ⑥ 섹션 적용 예시 -->
+  <section class="section">
+    <h2 class="section__title">섹션 컬러 조합 예시</h2>
+    <div class="usage-grid">
+      <div class="usage-card" style="background:#20345f;">
+        <div class="usage-label" style="color:#d29565;">Hero / Dark Section</div>
+        <div class="usage-title" style="color:#fff;">Recover With Us.<br><em style="color:#d29565;">Wherever You Had Surgery.</em></div>
+        <div class="usage-body" style="color:rgba(255,255,255,0.65);">BG: #20345F &nbsp;|&nbsp; 텍스트: #FFF &nbsp;|&nbsp; 포인트: #D29565</div>
+      </div>
+      <div class="usage-card" style="background:#fbf7f1;">
+        <div class="usage-label" style="color:#d29565;">Light / Warm Section</div>
+        <div class="usage-title" style="color:#20345f;">Recovery Life Program</div>
+        <div class="usage-body" style="color:#67686c;">BG: #FBF7F1 &nbsp;|&nbsp; 텍스트: #20345F &nbsp;|&nbsp; 서브: #67686C</div>
+      </div>
+      <div class="usage-card" style="background:#e9eff6;">
+        <div class="usage-label" style="color:#385b98;">Card / Feature Section</div>
+        <div class="usage-title" style="color:#20345f;">Clinical Evidence</div>
+        <div class="usage-body" style="color:#3e3f43;">BG: #E9EFF6 &nbsp;|&nbsp; 텍스트: #20345F &nbsp;|&nbsp; 본문: #3E3F43</div>
+      </div>
+      <div class="usage-card" style="background:#253d67; border:1px solid #d29565;">
+        <div class="usage-label" style="color:#d29565;">VIP Section</div>
+        <div class="usage-title" style="color:#fff;">White-Glove Care<br><em style="color:#d29565;">Every Step of the Way</em></div>
+        <div class="usage-body" style="color:rgba(255,255,255,0.65);">BG: #253D67 &nbsp;|&nbsp; 테두리: #D29565 &nbsp;|&nbsp; 포인트: #D29565</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 주의 노트 -->
+  <div class="note">
+    <strong>⚠️ 기획안 v1~v5 컬러 교체 필요</strong><br>
+    기존 기획안의 임의 컬러(<strong>#1A3A5C, #B8960C, #1A5C3A</strong>)는 실제 브랜드 CSS에 없는 색상입니다.<br>
+    랜딩 제작 시 위 공식 컬러(<strong>#20345F, #D29565, #253D67</strong>)로 교체해서 사용해주세요.
+  </div>
+
+  <footer style="margin-top:5.6rem; text-align:center; font-size:1.2rem; color:#bdbdbd;">
+    면력한방병원 · style.css 공식 추출 · Marketing Team · 2026.02
+  </footer>
+
+</div>
+</body>
+</html>
