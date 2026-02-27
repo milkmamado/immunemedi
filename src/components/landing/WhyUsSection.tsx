@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Building2, Leaf, Globe } from "lucide-react";
 import { type LucideIcon } from "lucide-react";
 
-const strengths: { icon: LucideIcon; title: string; locations?: string; subtitle?: string; desc: string }[] = [
+const strengths: { icon: LucideIcon; title: React.ReactNode; locations?: string; subtitle?: string; desc: string }[] = [
   {
     icon: Building2,
     title: <>서울 <span className="font-sans">4</span>개 지점 운영</>,
