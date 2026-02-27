@@ -98,7 +98,7 @@ const ProgramsSection = () => {
             Recovery Programs
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4">
-            당신의 회복을 위한 6가지 치료
+            당신의 회복을 위한 <span className="font-sans">6</span>가지 치료
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             모든 치료는 암 종류 · 수술 이력 · 현재 상태에 맞춰 개인 설계됩니다.
