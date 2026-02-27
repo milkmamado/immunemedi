@@ -98,13 +98,8 @@ const RecoveryLifeSection = () => {
               className="group p-5 rounded-xl bg-card border border-border hover:border-gold/30 transition-colors shadow-soft cursor-pointer"
               onClick={() => { setModalIndex(i); setModalOpen(true); }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <p.icon className="w-4.5 h-4.5 text-gold" />
-                </div>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-gold-light text-foreground font-medium">
-                  {p.freq}
-                </span>
+              <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 mb-3">
+                <p.icon className="w-4.5 h-4.5 text-gold" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
