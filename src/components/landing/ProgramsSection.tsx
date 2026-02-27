@@ -2,21 +2,21 @@ import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Shield, Thermometer, RefreshCw, Zap, Apple, ChevronDown } from "lucide-react";
 
-import healImmunity1 from "@/assets/heal-immunity-1.png";
-import healImmunity2 from "@/assets/heal-immunity-2.png";
-import healImmunity3 from "@/assets/heal-immunity-3.png";
-import healImmunity4 from "@/assets/heal-immunity-4.png";
-import healImmunity5 from "@/assets/heal-immunity-5.png";
-import healImmunity6 from "@/assets/heal-immunity-6.png";
-import healImmunity7 from "@/assets/heal-immunity-7.png";
+import treatThymosin from "@/assets/treat-thymosin.jpg";
+import treatMistletoe from "@/assets/treat-mistletoe-new.jpg";
+import treatImmunocyanin from "@/assets/treat-immunocyanin.jpg";
+import treatNkCell from "@/assets/treat-nk-cell-new.jpg";
+import treatImmuneBoost from "@/assets/treat-immune-boost.jpg";
+import treatGlutamine from "@/assets/treat-glutamine-new.jpg";
+import treatHerbalImmune from "@/assets/treat-herbal-immune.jpg";
 import healTemperature from "@/assets/heal-temperature.jpg";
 import healHyperthermiaDevice from "@/assets/heal-hyperthermia-device.jpg";
 import healCirculation from "@/assets/heal-circulation.jpg";
 import healLymphDevice from "@/assets/heal-lymph-device.jpg";
-import healResist1 from "@/assets/heal-resist-1.png";
-import healResist2 from "@/assets/heal-resist-2.png";
-import healResist3 from "@/assets/heal-resist-3.png";
-import healResist4 from "@/assets/heal-resist-4.png";
+import treatSelenium from "@/assets/treat-selenium.jpg";
+import treatGlutathione from "@/assets/treat-glutathione.jpg";
+import treatVitamin from "@/assets/treat-vitamin.jpg";
+import treatPlacenta from "@/assets/treat-placenta.jpg";
 import healNutrition1 from "@/assets/heal-nutrition-1.jpg";
 import healNutrition2 from "@/assets/heal-nutrition-2.jpg";
 import healNutrition3 from "@/assets/heal-nutrition-3.jpg";
@@ -59,18 +59,18 @@ const categories: Category[] = [
       {
         label: "세포면역",
         items: [
-          { title: "싸이모신알파1 요법", desc: "면역방어 기능을 높여 항암효과를 얻도록 합니다. 면역조절작용을 통해 T세포 및 NK세포를 활성화시켜 암세포를 파괴합니다.", image: healImmunity1 },
-          { title: "미슬토 요법", desc: "암세포의 증식을 억제시켜 사멸에 도움, 항암물질 및 면역기능을 증가시키는 물질이 함유되어 있습니다.", image: healImmunity2 },
-          { title: "이뮤노시아닌", desc: "NK세포 활성과 면역 반응을 조절하여 항암 치료를 보조합니다.", image: healImmunity3 },
-          { title: "NK세포치료제", desc: "몸속 면역세포를 배양시킨 살해 세포로써 암세포만을 선택적으로 공격합니다. 환자 본인에게만 투여할 수 있는 항암제로, 수술 이후의 미세 암 제거에도 도움을 줍니다.", image: healImmunity4 },
-          { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 낮춥니다.", image: healImmunity5 },
+          { title: "싸이모신알파1 요법", desc: "면역방어 기능을 높여 항암효과를 얻도록 합니다. 면역조절작용을 통해 T세포 및 NK세포를 활성화시켜 암세포를 파괴합니다.", image: treatThymosin },
+          { title: "미슬토 요법", desc: "암세포의 증식을 억제시켜 사멸에 도움, 항암물질 및 면역기능을 증가시키는 물질이 함유되어 있습니다.", image: treatMistletoe },
+          { title: "이뮤노시아닌", desc: "NK세포 활성과 면역 반응을 조절하여 항암 치료를 보조합니다.", image: treatImmunocyanin },
+          { title: "NK세포치료제", desc: "몸속 면역세포를 배양시킨 살해 세포로써 암세포만을 선택적으로 공격합니다. 환자 본인에게만 투여할 수 있는 항암제로, 수술 이후의 미세 암 제거에도 도움을 줍니다.", image: treatNkCell },
+          { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 낮춥니다.", image: treatImmuneBoost },
         ],
       },
       {
         label: "체액면역",
         items: [
-          { title: "글루타민 주사", desc: "간세포 재생을 촉진하고 항암 치료로 인한 간 손상을 완화", image: healImmunity6 },
-          { title: "면역플러스", desc: "황기 부정단 처방으로 면역기능 증강, 골수기능 개선 및 종양 억제", image: healImmunity7 },
+          { title: "글루타민 주사", desc: "간세포 재생을 촉진하고 항암 치료로 인한 간 손상을 완화", image: treatGlutamine },
+          { title: "면역플러스", desc: "황기 부정단 처방으로 면역기능 증강, 골수기능 개선 및 종양 억제", image: treatHerbalImmune },
         ],
       },
     ],
@@ -128,10 +128,10 @@ const categories: Category[] = [
       {
         label: "항산화 항노화",
         items: [
-          { title: "셀레늄 요법", desc: "활성산소를 제거하고 항산화 작용으로 암세포 자연사멸 유도", image: healResist1 },
-          { title: "글루타치온", desc: "영양제 효과를 촉진하고 항암제로 인한 신경성 통증 감소", image: healResist2 },
-          { title: "고농도 비타민 요법", desc: "항노화 핵산 합성을 촉진하고 메스꺼움·말초신경 염증 완화", image: healResist3 },
-          { title: "태반추출물", desc: "간 기능 개선을 돕고 피로 회복과 면역 활성에 효과적", image: healResist4 },
+          { title: "셀레늄 요법", desc: "활성산소를 제거하고 항산화 작용으로 암세포 자연사멸 유도", image: treatSelenium },
+          { title: "글루타치온", desc: "영양제 효과를 촉진하고 항암제로 인한 신경성 통증 감소", image: treatGlutathione },
+          { title: "고농도 비타민 요법", desc: "항노화 핵산 합성을 촉진하고 메스꺼움·말초신경 염증 완화", image: treatVitamin },
+          { title: "태반추출물", desc: "간 기능 개선을 돕고 피로 회복과 면역 활성에 효과적", image: treatPlacenta },
         ],
       },
     ],
@@ -373,7 +373,7 @@ const ProgramsSection = () => {
                                         {item.desc}
                                       </p>
                                     </div>
-                                    <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-muted">
+                                    <div className="w-24 h-24 sm:w-32 sm:h-32 shrink-0 rounded-lg overflow-hidden bg-muted">
                                       <img
                                         src={item.image}
                                         alt={item.title}
