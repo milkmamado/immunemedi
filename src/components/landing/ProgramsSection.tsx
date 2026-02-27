@@ -148,7 +148,6 @@ const categories: Category[] = [
         desc: "적절한 영양을 제공하여 치료 기간 동안 부작용을 줄이고 항암 치료로 손상된 조직을 회복하며, 영양 상태와 적정 체중을 유지할 수 있도록 돕는 식사를 제공합니다.",
         items: [
           { title: "표준 항암식", desc: "", image: healNutrition1 },
-          { title: "영양 관리", desc: "", image: healNutrition2 },
         ],
       },
       {
