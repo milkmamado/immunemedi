@@ -10,7 +10,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 interface Treatment {
   title: string;
   desc: string;
-  image: string; // replace with real imports later
+  image?: string;
+  icon?: LucideIcon;
 }
 
 const westernTreatments: Treatment[] = [
