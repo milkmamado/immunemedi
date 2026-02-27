@@ -180,14 +180,14 @@ const ProgramsSection = () => {
           className="text-center mb-16"
         >
           <span className="text-sm font-semibold tracking-widest uppercase text-gold">
-            The 5 Principles
+            The 5 Principles of Recovery
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4">
-            완전한 암 회복을 위한 필수 5원칙
+            암 회복, 다섯 가지를 함께 봅니다
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             면역 · 체온 · 순환 · 저항성 · 영양 —<br className="hidden sm:inline" />
-            빈틈없는 회복을 위해, 다섯 가지를 함께 봅니다.
+            각 원칙에 맞는 근거 기반 치료를 설계합니다.
           </p>
         </motion.div>
 
