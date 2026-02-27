@@ -10,6 +10,7 @@ import treatHbot from "@/assets/treat-hbot.jpg";
 import treatManual from "@/assets/treat-manual.jpg";
 import treatImmune from "@/assets/treat-immune.jpg";
 import treatMistletoe from "@/assets/treat-mistletoe.jpg";
+import treatMesima from "@/assets/treat-mesima.jpg";
 
 /* ── Treatment data ── */
 
