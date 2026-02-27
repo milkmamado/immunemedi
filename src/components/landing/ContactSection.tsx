@@ -269,7 +269,7 @@ const ContactSection = () => {
           {/* Google Maps */}
           <div className="mt-16 rounded-2xl overflow-hidden border border-primary-foreground/10">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.5!2d126.85!3d37.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDMzJzAwLjAiTiAxMjbCsDUxJzAwLjAiRQ!5e0!3m2!1sen!2skr!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.8!2d126.8656!3d37.4756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7e4b0e3f2e3d%3A0x1!2s16+Cheolsan-ro%2C+Gwangmyeong-si%2C+Gyeonggi-do!5e0!3m2!1sen!2skr!4v1700000000000"
               width="100%"
               height="300"
               style={{ border: 0 }}
