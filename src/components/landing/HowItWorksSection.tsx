@@ -6,7 +6,7 @@ const steps: { step: string; title: string; desc: string; icon: LucideIcon }[] =
   {
     step: "01",
     title: "온라인 상담",
-    desc: "카카오톡·LINE으로 증상·수술 이력 전달\n통역사가 함께 진행",
+    desc: "온라인 접수 폼으로 증상·수술 이력 전달\n통역사가 함께 진행",
     icon: MessageCircle,
   },
   {
