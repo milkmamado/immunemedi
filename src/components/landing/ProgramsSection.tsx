@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ClipboardCheck, TestTube, Stethoscope, Microscope } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import ImageModal from "./ImageModal";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -9,7 +10,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 interface Treatment {
   title: string;
   desc: string;
-  image: string; // replace with real imports later
+  image?: string;
+  icon?: LucideIcon;
 }
 
 const westernTreatments: Treatment[] = [
@@ -39,10 +41,10 @@ const orientalTreatments: Treatment[] = [
 ];
 
 const diagnostics: Treatment[] = [
-  { title: "종양표지자 검사", desc: "혈액에서 암세포 존재 유무를 감별하고 종양 크기를 추정", image: "/placeholder.svg" },
-  { title: "비타민 검사", desc: "B1·B6·B12·C·D 및 셀레늄 수치를 종합 분석", image: "/placeholder.svg" },
-  { title: "항암호중구 수치 검사", desc: "절대 호중구 수를 파악하여 면역 체계 이상 유무 진단", image: "/placeholder.svg" },
-  { title: "NK 활성도 검사", desc: "NK세포(자연살해 세포)의 활성도를 측정하여 현 면역 상태 진단", image: "/placeholder.svg" },
+  { title: "종양표지자 검사", icon: ClipboardCheck, desc: "혈액이나 다른 체액에서 측정, 암세포의 존재 유무를 결정 또는 정상조직과 암 조직을 감별하는 데 이용하는 검사. 종양의 임상적 병기를 결정하거나 크기를 추정할 때 활용" },
+  { title: "NK 활성도 검사", icon: Microscope, desc: "혈액 내 NK세포(자연살해 세포)를 인위적으로 활성화시켜 활성도를 측정하는 검사. 현 상태를 진단" },
+  { title: "항암호중구 수치 검사", icon: Stethoscope, desc: "항암 중, 항암제 치료 전 절대 호중구 수를 파악하여 면역 체계의 이상 유무를 진단하는 혈액 검사" },
+  { title: "비타민 검사", icon: TestTube, desc: "일반적인 비타민D 검사를 비롯하여 신경염 회복 및 신경세포 재생에 필수적인 비타민 B1, B6, B12와 면역력에 필수적인 비타민C, 대표적인 항산화제인 셀레늄 검사 진행" },
 ];
 
 const lifeCare: Treatment[] = [
@@ -158,27 +160,34 @@ const ProgramsSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card cursor-pointer"
-                    onClick={() => openCard(i)}
+                    className={`group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card ${t.image ? "cursor-pointer" : ""}`}
+                    onClick={() => t.image && openCard(i)}
                   >
-                    {/* Image */}
-                    <div className="relative h-36 overflow-hidden bg-muted">
-                      <img
-                        src={t.image}
-                        alt={t.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
-                      {/* Expand icon */}
-                      <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                    {/* Image or Icon header */}
+                    {t.image ? (
+                      <div className="relative h-36 overflow-hidden bg-muted">
+                        <img
+                          src={t.image}
+                          alt={t.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                        <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
+                    ) : null}
 
                     <div className="p-5">
+                      {/* Icon for non-image items */}
+                      {t.icon && !t.image && (
+                        <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
+                          <t.icon className="w-5 h-5 text-gold" />
+                        </div>
+                      )}
                       <h3 className="font-serif text-base font-bold text-foreground mb-2 leading-snug">
                         {t.title}
                       </h3>
