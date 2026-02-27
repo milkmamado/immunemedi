@@ -56,11 +56,11 @@ const categories: Category[] = [
       {
         label: "세포면역",
         items: [
-          { title: "싸이모신알파1 요법", desc: "면역방어 기능을 높여 T세포 및 NK세포를 활성화시켜 암세포를 파괴", image: healImmunity1 },
-          { title: "미슬토 요법", desc: "암세포 증식을 억제하고 면역기능을 증가시키는 항암 보조 요법", image: healImmunity2 },
-          { title: "이뮤노시아닌", desc: "NK세포 활성과 면역 반응을 조절하여 항암 치료를 보조", image: healImmunity3 },
-          { title: "NK세포치료제", desc: "배양된 면역세포로 암세포만 선택 공격, 수술 후 미세암 제거", image: healImmunity4 },
-          { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험 감소", image: healImmunity5 },
+          { title: "싸이모신알파1 요법", desc: "면역방어 기능을 높여 항암효과를 얻도록 합니다. 면역조절작용을 통해 T세포 및 NK세포를 활성화시켜 암세포를 파괴합니다.", image: healImmunity1 },
+          { title: "미슬토 요법", desc: "암세포의 증식을 억제시켜 사멸에 도움, 항암물질 및 면역기능을 증가시키는 물질이 함유되어 있습니다.", image: healImmunity2 },
+          { title: "이뮤노시아닌", desc: "NK세포 활성과 면역 반응을 조절하여 항암 치료를 보조합니다.", image: healImmunity3 },
+          { title: "NK세포치료제", desc: "몸속 면역세포를 배양시킨 살해 세포로써 암세포만을 선택적으로 공격합니다. 환자 본인에게만 투여할 수 있는 항암제로, 수술 이후의 미세 암 제거에도 도움을 줍니다.", image: healImmunity4 },
+          { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 낮춥니다.", image: healImmunity5 },
         ],
       },
       {
@@ -260,43 +260,31 @@ const ProgramsSection = () => {
                               </h4>
                             </div>
 
-                            {/* Treatment grid */}
-                            <div
-                              className={`grid gap-3 ${
-                                sub.items.length === 1
-                                  ? "grid-cols-1 max-w-xs"
-                                  : sub.items.length === 2
-                                    ? "grid-cols-2 max-w-lg"
-                                    : sub.items.length === 3
-                                      ? "grid-cols-3 max-w-2xl"
-                                      : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
-                              }`}
-                            >
+                            {/* Treatment list */}
+                            <div className="space-y-3">
                               {sub.items.map((item, i) => (
                                 <motion.div
                                   key={item.title + i}
                                   initial={{ opacity: 0, y: 12 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ duration: 0.25, delay: i * 0.04 }}
-                                  className="group"
+                                  className="group flex items-center gap-4 rounded-xl border border-border bg-background p-4 hover:border-gold/30 transition-colors"
                                 >
-                                  <div className="rounded-xl overflow-hidden border border-border bg-background">
-                                    <div className="aspect-square overflow-hidden bg-muted">
-                                      <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                        loading="lazy"
-                                      />
-                                    </div>
-                                    <div className="px-3 py-2.5">
-                                      <h5 className="text-xs sm:text-sm font-bold text-foreground leading-tight">
-                                        {item.title}
-                                      </h5>
-                                      <p className="text-[11px] text-muted-foreground leading-snug mt-1 line-clamp-2">
-                                        {item.desc}
-                                      </p>
-                                    </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h5 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                                      {item.title}
+                                    </h5>
+                                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
+                                      {item.desc}
+                                    </p>
+                                  </div>
+                                  <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-muted">
+                                    <img
+                                      src={item.image}
+                                      alt={item.title}
+                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                      loading="lazy"
+                                    />
                                   </div>
                                 </motion.div>
                               ))}
