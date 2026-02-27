@@ -271,6 +271,19 @@ const ProgramsSection = () => {
                             />
                           </div>
                         )}
+                        {/* Circulation hero image */}
+                        {cat.id === "circulation" && (
+                          <div className="rounded-xl overflow-hidden max-w-[592px]">
+                            <img
+                              src={healLymphDevice}
+                              alt="림프순환 치료"
+                              className="w-full h-auto"
+                              width={592}
+                              height={336}
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
                         {cat.subCategories.map((sub) => (
                           <div key={sub.label}>
                             {/* Subcategory label */}
