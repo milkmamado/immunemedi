@@ -46,21 +46,18 @@ const HeroSection = () => {
               href="#contact"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gold text-gold-foreground font-semibold text-lg shadow-gold hover:opacity-90 transition-all"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3C6.5 3 2 6.58 2 11c0 2.83 1.82 5.32 4.56 6.75-.16.98-.55 2.56-1.53 3.56 0 0 2.82-.49 4.9-2.15.69.1 1.39.16 2.07.16 5.5 0 10-3.58 10-8s-4.5-8-10-8z"/>
-              </svg>
-              카카오톡으로 상담 시작
+              무료 상담 접수하기
             </a>
             <a
               href="#contact"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border-2 border-primary-foreground/30 text-primary-foreground font-semibold text-lg hover:bg-primary-foreground/10 transition-all"
             >
-              LINE으로 문의하기
+              프로그램 자세히 보기
             </a>
           </div>
 
           <p className="mt-6 text-sm text-primary-foreground/60">
-            한국어 · 영어 · 베트남어 상담 가능 &nbsp;|&nbsp; 24시간 내 답변
+            24시간 내 답변 &nbsp;|&nbsp; WhatsApp · LINE · Telegram · WeChat 상담 가능
           </p>
         </motion.div>
       </div>
