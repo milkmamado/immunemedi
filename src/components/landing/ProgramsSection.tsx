@@ -373,7 +373,7 @@ const ProgramsSection = () => {
                                         {item.desc}
                                       </p>
                                     </div>
-                                    <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-muted">
+                                    <div className="w-24 h-24 sm:w-32 sm:h-32 shrink-0 rounded-lg overflow-hidden bg-muted">
                                       <img
                                         src={item.image}
                                         alt={item.title}
