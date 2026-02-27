@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["'Noto Serif KR'", "serif"],
+        serif: ["'Cormorant Garamond'", "serif"],
         sans: ["'Noto Sans KR'", "sans-serif"],
       },
       colors: {
