@@ -187,7 +187,7 @@ const ProgramsSection = () => {
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             면역 · 체온 · 순환 · 저항성 · 영양 —<br className="hidden sm:inline" />
-            면력이 정의한, 통합 면역암치료의 다섯 가지 기준입니다.
+            빈틈없는 회복을 위해, 다섯 가지를 함께 봅니다.
           </p>
         </motion.div>
 
