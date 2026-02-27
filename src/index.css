@@ -123,7 +123,7 @@
 
 @layer utilities {
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(38 65% 52%), hsl(32 70% 45%));
+    background: linear-gradient(135deg, hsl(27 56% 61%), hsl(20 52% 48%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
