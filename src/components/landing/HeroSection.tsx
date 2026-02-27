@@ -28,7 +28,7 @@ const HeroSection = () => {
             </span>
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-relaxed mb-6">
             어디서 수술을 받으셨든,
             <br />
             <span className="text-gradient-gold">회복은 면력에서</span>
