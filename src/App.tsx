@@ -17,7 +17,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Navigate to="/ko" replace />} />
           <Route path="/ko" element={<KoreanLanding />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Custom routes */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
