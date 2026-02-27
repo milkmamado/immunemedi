@@ -264,9 +264,6 @@ const ContactSection = () => {
                 {isSubmitting ? "접수 중..." : "상담 접수하기"}
               </button>
 
-              <p className="text-center text-xs text-primary-foreground/40">
-                입력하신 정보는 상담 목적으로만 사용됩니다.
-              </p>
             </form>
           )}
 
