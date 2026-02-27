@@ -194,7 +194,17 @@ const ProgramsSection = () => {
                             }}
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+                          {/* Text overlay at bottom */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-card/80 backdrop-blur-sm">
+                            <h3 className="font-serif text-sm font-bold text-foreground leading-snug">
+                              {t.title}
+                            </h3>
+                            <p className="text-xs text-muted-foreground leading-relaxed mt-1 line-clamp-2">
+                              {t.desc}
+                            </p>
+                          </div>
+                          {/* Edit icon */}
                           <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
@@ -205,9 +215,10 @@ const ProgramsSection = () => {
                       );
                     })() : null}
 
+                    {/* Text section for non-image items only */}
+                    {!t.image && (
                     <div className="p-5">
-                      {/* Icon for non-image items */}
-                      {t.icon && !t.image && (
+                      {t.icon && (
                         <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
                           <t.icon className="w-5 h-5 text-gold" />
                         </div>
@@ -219,6 +230,7 @@ const ProgramsSection = () => {
                         {t.desc}
                       </p>
                     </div>
+                    )}
                   </motion.div>
                 ))}
               </div>
