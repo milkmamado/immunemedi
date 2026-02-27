@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getImageSettings } from "./ImageEditorOverlay";
 
 interface ImageModalProps {
   images: { src?: string; alt: string; caption?: string; title?: string }[];
