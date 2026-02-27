@@ -169,8 +169,7 @@ const ProgramsSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className={`group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card ${t.image ? "cursor-pointer" : ""}`}
-                    onClick={() => t.image && openCard(i)}
+                    className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card"
                   >
                     {/* Image or Icon header */}
                     {t.image ? (
@@ -178,7 +177,7 @@ const ProgramsSection = () => {
                         <img
                           src={t.image}
                           alt={t.title}
-                          className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${t.image === treatManual ? 'scale-125' : ''}`}
+                          className={`w-full h-full object-cover ${t.image === treatManual ? 'scale-125' : ''}`}
                           style={
                             t.image === treatHyperthermia ? { objectPosition: 'center 20%' } :
                             t.image === treatManual ? { objectPosition: 'center center' } :
@@ -187,11 +186,6 @@ const ProgramsSection = () => {
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
-                        <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                          </svg>
-                        </div>
                       </div>
                     ) : null}
 
