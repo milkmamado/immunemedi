@@ -25,29 +25,29 @@ interface Treatment {
 }
 
 const westernTreatments: Treatment[] = [
-  { title: "고주파 온열 암치료", desc: "42˚C 이상의 고열을 발생시켜 암 종괴 부위와 암세포를 선택적으로 직접 괴사시키는 고주파 항암 치료법", image: treatHyperthermia },
-  { title: "고압 산소치료", desc: "암 조직에 고밀도 산소를 흡입하여 저산소 상태를 개선. 널리 활용되는 치료로써 에너지의 효율성을 높임", image: treatHbot },
-  { title: "림프순환 / 재활치료", desc: "림프계 손상으로 인한 증상을 치료. 림프액의 유동성을 증가시켜 면역력을 강화시키고 부종을 감소", image: treatManual },
-  { title: "싸이모신알파1 요법", desc: "면역방어 기능을 높인 항암효과. 면역조절작용을 통해 T세포 및 NK세포를 활성화시켜 암세포를 파괴", image: treatImmune },
-  { title: "미슬토 요법", desc: "암세포의 증식을 억제시켜 사멸에 도움, 항암물질 및 면역기능을 증가시키는 물질 함유", image: treatMistletoe },
+  { title: "고주파 온열 암치료", desc: "42˚C 이상 고열로 암세포를 선택적으로 괴사시키는 항암 치료법", image: treatHyperthermia },
+  { title: "고압 산소치료", desc: "고밀도 산소 흡입으로 저산소 상태를 개선하고 에너지 효율을 높임", image: treatHbot },
+  { title: "림프순환 / 재활치료", desc: "림프액 유동성을 증가시켜 면역력을 강화하고 부종을 감소", image: treatManual },
+  { title: "싸이모신알파1 요법", desc: "T세포·NK세포를 활성화시켜 면역방어 기능을 높이는 항암 요법", image: treatImmune },
+  { title: "미슬토 요법", desc: "암세포 증식을 억제하고 면역기능을 증가시키는 항암 보조 요법", image: treatMistletoe },
   { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 감소", image: treatMesima },
-  { title: "글루타민 요법", desc: "면역세포의 기능 향상 및 단백질 합성을 통해 근손실을 예방하며 항암치료 부작용에 효과", image: treatGlutamine },
-  { title: "NK세포치료제", desc: "몸속 면역세포를 배양시킨 살해 세포로써 암세포만을 선택적으로 공격. 환자 본인에게만 투여할 수 있는 항암제로, 수술 이후의 미세암 제거에도 도움", image: treatNkCell },
-  { title: "고농도 비타민 요법 (비타민 C)", desc: "단백질 대사에 필요한 수용성 비타민. 메스꺼움을 줄여주고 항노화 핵산의 합성을 촉진하며 근육경련, 말초신경 염증을 완화", image: "/placeholder.svg" },
-  { title: "글루타치온", desc: "영양제가 몸속에서 효과적으로 작용 촉진, 항암제로 인한 신경성 통증 감소에 효과, 중금속·방사선 등의 해독작용", image: "/placeholder.svg" },
-  { title: "셀레늄 요법", desc: "체내의 활성산소를 제거하고 항산화 작용을 활성화. 비타민E의 2,000배에 달하는 효과로 암세포의 자연사멸을 유도", image: "/placeholder.svg" },
-  { title: "비타민 B6", desc: "단백질 대사에 필요한 수용성 비타민. 메스꺼움을 줄여주고 항노화 핵산의 합성을 촉진하며 근육 경련, 말초신경 염증을 완화", image: "/placeholder.svg" },
-  { title: "비타민 B12", desc: "엽산과 함께 우리 몸에서 DNA를 합성할 때 사용. 아미노산 대사의 부산물인 호모시스테인을 파괴하여 심혈관질환 및 치매 예방에 효과적", image: "/placeholder.svg" },
-  { title: "영양관리 요법", desc: "경구 혹은 위장관 영양공급이 불가능·불충분한 경우 필수 에너지 및 지방산, 오메가-3 등의 영양소 공급 (TPN, 아미노산 등)", image: "/placeholder.svg" },
+  { title: "글루타민 요법", desc: "면역세포 기능 향상 및 근손실 예방, 항암 부작용 완화에 효과", image: treatGlutamine },
+  { title: "NK세포치료제", desc: "배양된 NK세포로 암세포만 선택 공격, 수술 후 미세암 제거에 도움", image: treatNkCell },
+  { title: "고농도 비타민 C 요법", desc: "항노화 핵산 합성을 촉진하고 말초신경 염증 및 메스꺼움을 완화", image: "/placeholder.svg" },
+  { title: "글루타치온", desc: "영양제 효과를 촉진하고 항암제로 인한 신경성 통증을 감소", image: "/placeholder.svg" },
+  { title: "셀레늄 요법", desc: "활성산소를 제거하고 항산화 작용으로 암세포 자연사멸을 유도", image: "/placeholder.svg" },
+  { title: "비타민 B6", desc: "단백질 대사를 돕고 메스꺼움·근육경련·말초신경 염증을 완화", image: "/placeholder.svg" },
+  { title: "비타민 B12", desc: "DNA 합성을 보조하고 호모시스테인을 분해하여 심혈관 건강에 기여", image: "/placeholder.svg" },
+  { title: "영양관리 요법", desc: "경구 영양이 불충분한 경우 필수 에너지·지방산·오메가-3 등을 공급", image: "/placeholder.svg" },
 ];
 
 const orientalTreatments: Treatment[] = [
-  { title: "신종단", desc: "공개 특허받은 항암단의 가감 처방. 림프순환장애 및 부종 치료 목적으로 인진호, 택사, 적복령 등을 처방", image: "/placeholder.svg" },
-  { title: "항암단", desc: "곡기생, 산자고 등의 약재로 담음·어혈을 제거하고 종양 활성을 억제. 임상에서 신생혈관 수치가 유의미하게 감소", image: "/placeholder.svg" },
-  { title: "면역플러스", desc: "황기 부정단 처방으로 종양 면역 세포의 활성화 촉진. 면역기능 증강, 골수기능 개선 및 종양 증식 억제", image: "/placeholder.svg" },
-  { title: "항암플러스", desc: "옻나무 추출 진액에서 알레르기 성분을 제거하고 루시올 함량을 높인 천연물질로 암 치료 효과 증진", image: "/placeholder.svg" },
-  { title: "청간플러스", desc: "간 기능 저하 시 과산화지질 생성을 감소시켜 간 손상을 보호하고 중성지방 수치를 개선", image: "/placeholder.svg" },
-  { title: "면역약침", desc: "멸균된 순수 한약재를 침을 통해 직접 투여. 약과 침의 동시 효과로 항암 부작용을 완화", image: "/placeholder.svg" },
+  { title: "신종단", desc: "특허 항암단의 가감 처방으로 림프순환장애 및 부종을 치료", image: "/placeholder.svg" },
+  { title: "항암단", desc: "담음·어혈을 제거하고 종양 활성을 억제, 신생혈관 수치 감소 효과", image: "/placeholder.svg" },
+  { title: "면역플러스", desc: "황기 부정단 처방으로 면역기능 증강 및 종양 증식 억제", image: "/placeholder.svg" },
+  { title: "항암플러스", desc: "옻나무 추출 천연물질로 루시올 함량을 높여 항암 효과 증진", image: "/placeholder.svg" },
+  { title: "청간플러스", desc: "과산화지질 생성을 감소시켜 간 손상을 보호하고 간 기능을 개선", image: "/placeholder.svg" },
+  { title: "면역약침", desc: "멸균 한약재를 침으로 직접 투여하여 항암 부작용을 완화", image: "/placeholder.svg" },
 ];
 
 const diagnostics: Treatment[] = [
