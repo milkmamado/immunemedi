@@ -190,36 +190,6 @@ const ProgramsSection = () => {
           </p>
         </motion.div>
 
-        {/* 5-pillar visual row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-5 gap-2 sm:gap-3 mb-14 max-w-3xl mx-auto"
-        >
-          {categories.map((cat) => {
-            const Icon = cat.icon;
-            const isOpen = openId === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => toggle(cat.id)}
-                className={`flex flex-col items-center gap-1.5 sm:gap-2 py-3 sm:py-4 rounded-xl text-center transition-all duration-300 ${
-                  isOpen
-                    ? "bg-primary text-primary-foreground shadow-gold"
-                    : "bg-card text-foreground border border-border hover:border-gold/40"
-                }`}
-              >
-                <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${isOpen ? "" : "text-muted-foreground"}`} />
-                <span className="text-xs sm:text-sm font-bold">{cat.label}</span>
-                <span className="text-[9px] sm:text-[10px] opacity-50 uppercase tracking-wider leading-none">
-                  {cat.labelEn}
-                </span>
-              </button>
-            );
-          })}
-        </motion.div>
-
         {/* Accordion list */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
