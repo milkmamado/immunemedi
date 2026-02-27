@@ -1,11 +1,31 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { FileBarChart, ChevronLeft, ChevronRight } from "lucide-react";
 
+function CountUp({ target, suffix, inView }: { target: number; suffix: string; inView: boolean }) {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) =>
+    v >= 1000 ? Math.round(v).toLocaleString() : Math.round(v).toString()
+  );
+  const [display, setDisplay] = useState("0");
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(count, target, {
+      duration: 2,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    });
+    const unsub = rounded.on("change", (v) => setDisplay(v));
+    return () => { controls.stop(); unsub(); };
+  }, [inView, target, count, rounded]);
+
+  return <>{display}{suffix}</>;
+}
+
 const stats = [
-  { value: "50,000+", label: "누적 치료사례", sub: "Cases Treated" },
-  { value: "95%+", label: "환자 만족도", sub: "Patient Satisfaction" },
-  { value: "20년+", label: "임상 경력", sub: "Years of Clinical Experience" },
+  { target: 50000, suffix: "+", label: "누적 치료사례", sub: "Cases Treated" },
+  { target: 95, suffix: "%+", label: "환자 만족도", sub: "Patient Satisfaction" },
+  { target: 20, suffix: "년+", label: "임상 경력", sub: "Years of Clinical Experience" },
 ];
 
 const stages = [
@@ -55,7 +75,7 @@ const EvidenceSection = () => {
                 className="text-center"
               >
                 <div className="text-5xl sm:text-6xl font-sans font-bold text-gold mb-3">
-                  {s.value}
+                  <CountUp target={s.target} suffix={s.suffix} inView={inView} />
                 </div>
                 <div className="font-semibold text-primary-foreground text-lg mb-1">{s.label}</div>
                 <div className="text-sm text-primary-foreground/40">{s.sub}</div>
