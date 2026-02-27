@@ -263,7 +263,7 @@ const ProgramsSection = () => {
                             <img
                               src={healHyperthermiaDevice}
                               alt="고주파온열암치료 장비"
-                              className="w-full h-48 sm:h-64 object-cover"
+                              className="w-full"
                               loading="lazy"
                             />
                           </div>
