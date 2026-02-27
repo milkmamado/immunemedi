@@ -75,7 +75,7 @@ const EvidenceSection = () => {
                 className="text-center"
               >
                 <div className="text-5xl sm:text-6xl font-sans font-bold text-gold mb-3">
-                  {s.value}
+                  <CountUp target={s.target} suffix={s.suffix} inView={inView} />
                 </div>
                 <div className="font-semibold text-primary-foreground text-lg mb-1">{s.label}</div>
                 <div className="text-sm text-primary-foreground/40">{s.sub}</div>
