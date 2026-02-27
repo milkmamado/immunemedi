@@ -36,7 +36,6 @@ const stages = [
   { step: "02", time: "수술 직후", title: "회복 및 재활", desc: "후유증 완화 · 체력 회복 · 신체기능 정상화", highlight: false },
   { step: "03", time: "항암 중", title: "치료 효과 개선", desc: "부작용 감소 · 내성 완화 · 암성 통증 관리", highlight: true },
   { step: "04", time: "항암 종료 후", title: "전이·재발 관리", desc: "면역세포 활성화 · 잔존 암세포 억제", highlight: false },
-  { step: "05", time: "장기 관리", title: "면역 안정화", desc: "삶의 질 회복 · 지속 관리", highlight: false },
 ];
 
 const EvidenceSection = () => {
