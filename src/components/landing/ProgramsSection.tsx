@@ -8,6 +8,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import treatHyperthermia from "@/assets/treat-hyperthermia.jpg";
 import treatHbot from "@/assets/treat-hbot.jpg";
 import treatManual from "@/assets/treat-manual.jpg";
+import treatImmune from "@/assets/treat-immune.jpg";
 
 /* ── Treatment data ── */
 
