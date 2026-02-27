@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,97 +6,103 @@
 
 @layer base {
   :root {
-    /* Premium medical luxury palette */
-    --background: 40 20% 98%;
-    --foreground: 220 30% 15%;
+    /* 면력한방병원 공식 디자인 가이드 */
+    --background: 0 0% 96%;
+    --foreground: 228 3% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 30% 15%;
+    --card-foreground: 228 3% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 15%;
+    --popover-foreground: 228 3% 25%;
 
-    /* Deep navy - trust & authority */
-    --primary: 215 45% 18%;
-    --primary-foreground: 40 30% 96%;
+    /* Primary Blue #253D67 */
+    --primary: 218 46% 27%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Warm cream */
-    --secondary: 38 30% 94%;
-    --secondary-foreground: 220 30% 15%;
+    /* Warm cream #FBF7F1 */
+    --secondary: 36 56% 96%;
+    --secondary-foreground: 228 3% 25%;
 
-    /* Sage green - healing */
-    --accent: 155 25% 42%;
+    /* Gold accent #D29565 */
+    --accent: 27 56% 61%;
     --accent-foreground: 0 0% 100%;
 
-    /* Gold - luxury */
-    --gold: 38 65% 52%;
+    /* Gold tokens */
+    --gold: 27 56% 61%;
     --gold-foreground: 0 0% 100%;
-    --gold-light: 38 50% 88%;
+    --gold-light: 29 52% 88%;
+    --gold-dark: 20 52% 48%;
 
-    --muted: 220 15% 94%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 216 42% 94%;
+    --muted-foreground: 0 0% 52%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 215 45% 18%;
+    --border: 210 35% 78%;
+    --input: 210 35% 78%;
+    --ring: 218 46% 27%;
 
     --radius: 0.75rem;
 
+    /* Deep navy for dark sections #20345F */
+    --primary-deep: 220 50% 25%;
+
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(215 45% 18% / 0.85), hsl(215 45% 18% / 0.5));
-    --gradient-gold: linear-gradient(135deg, hsl(38 65% 52%), hsl(32 70% 45%));
-    --gradient-sage: linear-gradient(135deg, hsl(155 25% 42%), hsl(160 30% 35%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 50% 25% / 0.85), hsl(220 50% 25% / 0.5));
+    --gradient-gold: linear-gradient(135deg, hsl(27 56% 61%), hsl(20 52% 48%));
+    --gradient-sage: linear-gradient(135deg, hsl(218 46% 27%), hsl(220 50% 25%));
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(220 30% 15% / 0.08);
-    --shadow-card: 0 8px 30px -8px hsl(220 30% 15% / 0.1);
-    --shadow-elevated: 0 20px 60px -15px hsl(220 30% 15% / 0.15);
-    --shadow-gold: 0 8px 30px -8px hsl(38 65% 52% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(228 3% 25% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(228 3% 25% / 0.1);
+    --shadow-elevated: 0 20px 60px -15px hsl(228 3% 25% / 0.15);
+    --shadow-gold: 0 8px 30px -8px hsl(27 56% 61% / 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-primary: 218 46% 27%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 216 42% 94%;
+    --sidebar-accent-foreground: 218 46% 27%;
+    --sidebar-border: 210 35% 78%;
+    --sidebar-ring: 218 46% 27%;
   }
 
   .dark {
-    --background: 220 25% 8%;
-    --foreground: 40 20% 92%;
-    --card: 220 25% 12%;
-    --card-foreground: 40 20% 92%;
-    --popover: 220 25% 12%;
-    --popover-foreground: 40 20% 92%;
-    --primary: 38 65% 52%;
-    --primary-foreground: 220 30% 10%;
-    --secondary: 220 20% 16%;
-    --secondary-foreground: 40 20% 92%;
-    --accent: 155 25% 42%;
+    --background: 220 30% 10%;
+    --foreground: 36 30% 92%;
+    --card: 220 30% 14%;
+    --card-foreground: 36 30% 92%;
+    --popover: 220 30% 14%;
+    --popover-foreground: 36 30% 92%;
+    --primary: 27 56% 61%;
+    --primary-foreground: 220 50% 12%;
+    --secondary: 220 25% 16%;
+    --secondary-foreground: 36 30% 92%;
+    --accent: 27 56% 61%;
     --accent-foreground: 0 0% 100%;
-    --gold: 38 65% 52%;
+    --gold: 27 56% 61%;
     --gold-foreground: 0 0% 100%;
-    --gold-light: 38 30% 20%;
-    --muted: 220 20% 16%;
+    --gold-light: 29 30% 20%;
+    --gold-dark: 20 52% 48%;
+    --muted: 220 25% 16%;
     --muted-foreground: 220 15% 60%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 38 65% 52%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 25% 22%;
+    --input: 220 25% 22%;
+    --ring: 27 56% 61%;
+    --primary-deep: 220 50% 20%;
+    --sidebar-background: 220 30% 10%;
+    --sidebar-foreground: 36 30% 92%;
+    --sidebar-primary: 27 56% 61%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 25% 18%;
+    --sidebar-accent-foreground: 36 30% 92%;
+    --sidebar-border: 220 25% 22%;
+    --sidebar-ring: 27 56% 61%;
   }
 }
 
