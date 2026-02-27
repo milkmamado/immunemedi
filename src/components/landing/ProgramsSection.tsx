@@ -180,13 +180,14 @@ const ProgramsSection = () => {
           className="text-center mb-16"
         >
           <span className="text-sm font-semibold tracking-widest uppercase text-gold">
-            Treatment Programs
+            The 5 Principles
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4">
-            그렇다면 어떤 치료가 필요할까요?
+            완전한 암 회복을 위한 필수 5원칙
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            면역 · 체온 · 순환 · 저항성 · 영양, 5가지 핵심 축으로 구성된 통합 면역암치료
+            면역 · 체온 · 순환 · 저항성 · 영양 —<br className="hidden sm:inline" />
+            세계 어디에도 없는, 면력만의 통합 면역암치료 정의입니다.
           </p>
         </motion.div>
 
