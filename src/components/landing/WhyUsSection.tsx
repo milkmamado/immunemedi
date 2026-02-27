@@ -39,7 +39,7 @@ const WhyUsSection = () => {
           className="text-center mb-16"
         >
           <span className="text-sm font-semibold tracking-widest uppercase text-gold">
-            Why Korea? Why Myeongryeok?
+            Why Korea? Why Myeonryeok?
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4">
             왜 한국인가? 왜 면력인가?

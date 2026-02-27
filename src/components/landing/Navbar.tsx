@@ -38,7 +38,7 @@ const Navbar = () => {
           <a href="#" className="flex items-center">
             <img
               src={logoSvg}
-              alt="면력한방병원 - Myeongryeok Korean Medicine Hospital"
+              alt="면력한방병원 - Myeonryeok Korean Medicine Hospital"
               className={`h-10 lg:h-12 w-auto transition-all ${scrolled ? '' : 'brightness-0 invert'}`}
             />
           </a>
