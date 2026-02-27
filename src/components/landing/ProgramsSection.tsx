@@ -82,7 +82,13 @@ const categories: Category[] = [
       {
         label: "중심체온상승",
         items: [
-          { title: "고주파온열암치료", desc: "고온 환경에서 암 조직을 민감하게 만들고 면역세포를 활성화하여 항암 면역 반응 강화", image: healTemperature },
+          { title: "고주파온열암치료", desc: "고온 환경에서 암 조직은 더 민감해지고, 면역세포가 활성화되어 종양 미세환경에서 항암 면역 반응이 강화됩니다. 항암제 투여와 고주파온열 치료를 병행할 경우, 생존기간이 유의미하게 증가했다는 연구결과가 존재합니다.", image: healTemperature },
+        ],
+      },
+      {
+        label: "온열요법",
+        items: [
+          { title: "적외선온열요법", desc: "적외선 에너지로 심부 체온을 올려 혈액순환과 면역 활성을 촉진합니다.", image: healTemperature },
         ],
       },
     ],
@@ -260,35 +266,76 @@ const ProgramsSection = () => {
                               </h4>
                             </div>
 
-                            {/* Treatment list */}
-                            <div className="space-y-3">
-                              {sub.items.map((item, i) => (
-                                <motion.div
-                                  key={item.title + i}
-                                  initial={{ opacity: 0, y: 12 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  transition={{ duration: 0.25, delay: i * 0.04 }}
-                                  className="group flex items-center gap-4 rounded-xl border border-border bg-background p-4 hover:border-gold/30 transition-colors"
-                                >
-                                  <div className="flex-1 min-w-0">
-                                    <h5 className="text-sm sm:text-base font-bold text-foreground leading-tight">
-                                      {item.title}
-                                    </h5>
-                                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
-                                      {item.desc}
-                                    </p>
-                                  </div>
-                                  <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-muted">
-                                    <img
-                                      src={item.image}
-                                      alt={item.title}
-                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                      loading="lazy"
-                                    />
-                                  </div>
-                                </motion.div>
-                              ))}
-                            </div>
+                            {/* Treatment items */}
+                            {cat.id === "temperature" ? (
+                              /* Card layout: image on top, text below */
+                              <div className={`grid gap-3 ${
+                                sub.items.length === 1
+                                  ? "grid-cols-1 max-w-xs"
+                                  : sub.items.length === 2
+                                    ? "grid-cols-2 max-w-lg"
+                                    : "grid-cols-2 sm:grid-cols-3"
+                              }`}>
+                                {sub.items.map((item, i) => (
+                                  <motion.div
+                                    key={item.title + i}
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.25, delay: i * 0.04 }}
+                                    className="group"
+                                  >
+                                    <div className="rounded-xl overflow-hidden border border-border bg-background">
+                                      <div className="aspect-square overflow-hidden bg-muted">
+                                        <img
+                                          src={item.image}
+                                          alt={item.title}
+                                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                          loading="lazy"
+                                        />
+                                      </div>
+                                      <div className="px-3 py-2.5">
+                                        <h5 className="text-xs sm:text-sm font-bold text-foreground leading-tight">
+                                          {item.title}
+                                        </h5>
+                                        <p className="text-[11px] text-muted-foreground leading-snug mt-1">
+                                          {item.desc}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            ) : (
+                              /* List layout: text left, small image right */
+                              <div className="space-y-3">
+                                {sub.items.map((item, i) => (
+                                  <motion.div
+                                    key={item.title + i}
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.25, delay: i * 0.04 }}
+                                    className="group flex items-center gap-4 rounded-xl border border-border bg-background p-4 hover:border-gold/30 transition-colors"
+                                  >
+                                    <div className="flex-1 min-w-0">
+                                      <h5 className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                                        {item.title}
+                                      </h5>
+                                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
+                                        {item.desc}
+                                      </p>
+                                    </div>
+                                    <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-muted">
+                                      <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        loading="lazy"
+                                      />
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
