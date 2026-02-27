@@ -202,7 +202,7 @@ const ProgramsSection = () => {
                             <h3 className="font-serif text-sm font-bold text-foreground leading-snug">
                               {t.title}
                             </h3>
-                            <p className="text-xs text-muted-foreground leading-relaxed mt-1 line-clamp-2">
+                            <p className="text-xs text-muted-foreground leading-relaxed mt-1 line-clamp-3">
                               {t.desc}
                             </p>
                           </div>
