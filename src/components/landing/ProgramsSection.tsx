@@ -42,7 +42,7 @@ const westernTreatments: Treatment[] = [
 ];
 
 const orientalTreatments: Treatment[] = [
-  { title: "신종단", desc: "특허 항암단의 가감 처방으로 림프순환장애 및 부종을 치료", image: "/placeholder.svg" },
+  { title: "신종단", desc: "특허 항암단의 가감 처방. 림프 절제술 및 항암 부작용으로 인한 림프순환장애·부종에 효과", image: "/placeholder.svg" },
   { title: "항암단", desc: "담음·어혈을 제거하고 종양 활성을 억제, 신생혈관 수치 감소 효과", image: "/placeholder.svg" },
   { title: "면역플러스", desc: "황기 부정단 처방으로 면역기능 증강 및 종양 증식 억제", image: "/placeholder.svg" },
   { title: "항암플러스", desc: "옻나무 추출 천연물질로 루시올 함량을 높여 항암 효과 증진", image: "/placeholder.svg" },
