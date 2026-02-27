@@ -10,12 +10,12 @@ import lifeExercise from "@/assets/life-exercise.jpg";
 import lifeOuting from "@/assets/life-outing.jpg";
 import lifeFood from "@/assets/life-food.jpg";
 
-const programs: { icon: LucideIcon; title: string; freq: string; desc: string; image: string; imageAlt: string }[] = [
-  { icon: TreePine, title: "산책 프로그램", freq: "매일 평일 오전", desc: "병원 인근 야외 산책 버스 운행 — 자연 속 심리적 회복", image: recoveryNature, imageAlt: "산책 프로그램" },
-  { icon: Flower2, title: "소풍 프로그램", freq: "매주 1회", desc: "병원 밖 힐링 소풍 — 한국 문화 체험 + 정서적 회복", image: lifeOuting, imageAlt: "소풍 프로그램 — 한국 사찰 방문" },
-  { icon: Dumbbell, title: "운동치료", freq: "매주 1회", desc: "전문 치료사와 함께하는 운동 — 체력 회복 + 재활", image: lifeExercise, imageAlt: "운동치료 프로그램" },
-  { icon: Palette, title: "원데이클래스", freq: "매주 1회", desc: "주제별 다양한 클래스 — 즐거움 + 정서 치유", image: lifeOuting, imageAlt: "원데이클래스 활동" },
-  { icon: UtensilsCrossed, title: "푸드테라피", freq: "2주 1회", desc: "전문 셰프 + 임상 영양사 협업 — 영양 관리 + 미식 경험", image: lifeFood, imageAlt: "푸드테라피 건강식" },
+const programs: { icon: LucideIcon; title: string; desc: string; image: string; imageAlt: string }[] = [
+  { icon: TreePine, title: "산책 프로그램", desc: "병원 인근 야외 산책 버스 운행 — 자연 속 심리적 회복", image: recoveryNature, imageAlt: "산책 프로그램" },
+  { icon: Flower2, title: "소풍 프로그램", desc: "병원 밖 힐링 소풍 — 한국 문화 체험 + 정서적 회복", image: lifeOuting, imageAlt: "소풍 프로그램 — 한국 사찰 방문" },
+  { icon: Dumbbell, title: "운동치료", desc: "전문 치료사와 함께하는 운동 — 체력 회복 + 재활", image: lifeExercise, imageAlt: "운동치료 프로그램" },
+  { icon: Palette, title: "원데이클래스", desc: "주제별 다양한 클래스 — 즐거움 + 정서 치유", image: lifeOuting, imageAlt: "원데이클래스 활동" },
+  { icon: UtensilsCrossed, title: "푸드테라피", desc: "전문 셰프 + 임상 영양사 협업 — 영양 관리 + 미식 경험", image: lifeFood, imageAlt: "푸드테라피 건강식" },
 ];
 
 const RecoveryLifeSection = () => {
@@ -27,7 +27,7 @@ const RecoveryLifeSection = () => {
   const modalImages = programs.map((p) => ({
     src: p.image,
     alt: p.imageAlt,
-    caption: `${p.title} (${p.freq}) — ${p.desc}`,
+    caption: `${p.title} — ${p.desc}`,
   }));
 
   return (
@@ -98,13 +98,8 @@ const RecoveryLifeSection = () => {
               className="group p-5 rounded-xl bg-card border border-border hover:border-gold/30 transition-colors shadow-soft cursor-pointer"
               onClick={() => { setModalIndex(i); setModalOpen(true); }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <p.icon className="w-4.5 h-4.5 text-gold" />
-                </div>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-gold-light text-foreground font-medium">
-                  {p.freq}
-                </span>
+              <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 mb-3">
+                <p.icon className="w-4.5 h-4.5 text-gold" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
