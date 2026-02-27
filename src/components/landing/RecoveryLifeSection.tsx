@@ -27,7 +27,7 @@ const RecoveryLifeSection = () => {
   const modalImages = programs.map((p) => ({
     src: p.image,
     alt: p.imageAlt,
-    caption: `${p.title} (${p.freq}) — ${p.desc}`,
+    caption: `${p.title} — ${p.desc}`,
   }));
 
   return (
