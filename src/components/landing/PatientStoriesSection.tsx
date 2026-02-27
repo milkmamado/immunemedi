@@ -75,10 +75,6 @@ const PatientStoriesSection = () => {
             </motion.div>
           ))}
         </div>
-
-        <p className="mt-10 text-center text-sm text-muted-foreground italic">
-          ※ 실제 후기 사용 시 익명 처리 + 서면 동의 필수. 위 내용은 예시 양식입니다.
-        </p>
       </div>
     </section>
   );
