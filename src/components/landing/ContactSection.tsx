@@ -274,7 +274,7 @@ const ContactSection = () => {
                   <MapPin className="w-4 h-4 text-gold" /> 위치
                 </h4>
                 <p className="text-sm text-primary-foreground/60">
-                  서울특별시 (강서 · 광명 · 신촌 · 성동)
+                  서울·경기 (강서 · 광명 · 신촌 · 성동)
                 </p>
               </div>
               <div>
