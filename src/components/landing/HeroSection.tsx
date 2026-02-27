@@ -46,13 +46,7 @@ const HeroSection = () => {
               href="#contact"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gold text-gold-foreground font-semibold text-lg shadow-gold hover:opacity-90 transition-all"
             >
-              무료 상담 접수하기
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border-2 border-primary-foreground/30 text-primary-foreground font-semibold text-lg hover:bg-primary-foreground/10 transition-all"
-            >
-              프로그램 자세히 보기
+              상담문의
             </a>
           </div>
 
