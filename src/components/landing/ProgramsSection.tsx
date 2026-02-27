@@ -35,6 +35,7 @@ interface Treatment {
 
 interface SubCategory {
   label: string;
+  desc?: string;
   items: Treatment[];
 }
 
