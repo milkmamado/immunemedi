@@ -290,15 +290,51 @@ const ProgramsSection = () => {
                         {cat.subCategories.map((sub) => (
                           <div key={sub.label}>
                             {/* Subcategory label */}
-                            <div className="flex items-center gap-2.5 mb-4">
+                            <div className="flex items-center gap-2.5 mb-2">
                               <div className="w-0.5 h-5 rounded-full bg-gold" />
                               <h4 className="text-sm sm:text-base font-bold text-foreground">
                                 {sub.label}
                               </h4>
                             </div>
 
+                            {/* Subcategory description */}
+                            {sub.desc && (
+                              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 ml-3">
+                                {sub.desc}
+                              </p>
+                            )}
+
                             {/* Treatment items */}
-                            {(cat.id === "temperature" || cat.id === "circulation") ? (
+                            {cat.id === "nutrition" ? (
+                              /* Nutrition: image grid only */
+                              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                                {sub.items.map((item, i) => (
+                                  <motion.div
+                                    key={item.title + i}
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.25, delay: i * 0.04 }}
+                                    className="group"
+                                  >
+                                    <div className="rounded-xl overflow-hidden border border-border bg-background">
+                                      <div className="aspect-square overflow-hidden bg-muted">
+                                        <img
+                                          src={item.image}
+                                          alt={item.title}
+                                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                          loading="lazy"
+                                        />
+                                      </div>
+                                      <div className="px-3 py-2">
+                                        <h5 className="text-xs sm:text-sm font-bold text-foreground text-center">
+                                          {item.title}
+                                        </h5>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            ) : (cat.id === "temperature" || cat.id === "circulation") ? (
                               /* Text-only clean list */
                               <div className="space-y-3">
                                 {sub.items.map((item, i) => (
