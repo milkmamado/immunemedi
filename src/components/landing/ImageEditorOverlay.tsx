@@ -89,6 +89,7 @@ const ImageEditorOverlay = ({ treatmentKey, defaultSrc, onClose }: ImageEditorOv
                 objectFit: settings.fit,
                 objectPosition: `${settings.posX}% ${settings.posY}%`,
                 transform: `scale(${settings.scale / 100})`,
+                transformOrigin: `${settings.posX}% ${settings.posY}%`,
               }}
             />
           ) : (
