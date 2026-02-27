@@ -117,13 +117,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', 'Noto Sans KR', sans-serif;
-  }
-
-  /* 한국어 텍스트가 포함된 헤딩은 Noto Sans KR 우선 */
-  h1:lang(ko), h2:lang(ko), h3:lang(ko), h4:lang(ko),
-  .font-serif-ko {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
   }
 }
 
