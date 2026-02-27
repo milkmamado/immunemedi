@@ -13,6 +13,7 @@ import treatImmune from "@/assets/treat-immune.jpg";
 import treatMistletoe from "@/assets/treat-mistletoe.jpg";
 import treatMesima from "@/assets/treat-mesima.jpg";
 import treatGlutamine from "@/assets/treat-glutamine.jpg";
+import treatNkCell from "@/assets/treat-nk-cell.jpg";
 
 /* ── Treatment data ── */
 
