@@ -30,12 +30,12 @@ const westernTreatments: Treatment[] = [
 ];
 
 const orientalTreatments: Treatment[] = [
-  { title: "항암단", desc: "곡기생, 산자고, 삼칠근 등으로 종양 활성 억제 및 담음·어혈 제거", image: "/placeholder.svg" },
-  { title: "면역플러스", desc: "황기 부정단 처방으로 종양 면역세포 활성화 촉진 및 골수기능 개선", image: "/placeholder.svg" },
-  { title: "항암플러스", desc: "옻나무 진액에서 추출한 루시올(Urushiol)로 암 치료 효과 증진", image: "/placeholder.svg" },
-  { title: "신종단", desc: "공개 특허 항암단 기반, 림프순환장애 및 부종 치료 목적의 가감 처방", image: "/placeholder.svg" },
-  { title: "청간플러스", desc: "간 기능 개선, 과산화지질 생성 감소, 중성지방 수치 감소", image: "/placeholder.svg" },
-  { title: "면역약침", desc: "멸균 한약재를 침으로 직접 투여 — 약과 침의 동시 효과", image: "/placeholder.svg" },
+  { title: "신종단", desc: "공개 특허받은 항암단에서 특정약물을 가감한 처방. 림프 절제술 및 항암부작용으로 림프순환장애 및 부종 치료목적으로 인진호, 택사, 적복령, 백출, 저령, 육계 처방", image: "/placeholder.svg" },
+  { title: "항암단", desc: "곡기생, 산자고, 삼칠근 등의 약재들로 구성된 처방으로, 종양세포 대사 산물인 담음 및 어혈을 제거하고 종양 활성 억제 효과. 암환자 100명 대상 임상에서 VEGF, bFGF 등 신생혈관형성 수치가 통계적으로 유의미하게 감소", image: "/placeholder.svg" },
+  { title: "면역플러스", desc: "황기 부정단 처방으로 종양 면역 세포의 활성화촉진. 면역기능 증강, 골수기능 개선 및 종양의 증식을 억제", image: "/placeholder.svg" },
+  { title: "항암플러스", desc: "옻나무에서 추출한 진액에서 알레르기 성분을 제거, 루시올(Urushiol)을 높인 천연물질로 암 치료 효과 증진", image: "/placeholder.svg" },
+  { title: "청간플러스", desc: "간 기능 저하와 LFT 상승 시 간 기능을 개선. 과산화지질 생성량을 감소시켜 간 손상을 보호하고 중성지방 수치를 감소", image: "/placeholder.svg" },
+  { title: "면역약침", desc: "멸균된 순수 한약재를 침을 통해 몸에 직접 투여. 약과 침의 동시 효과, 항암 부작용 완화", image: "/placeholder.svg" },
 ];
 
 const diagnostics: Treatment[] = [
