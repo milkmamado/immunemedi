@@ -1,58 +1,290 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { MapPin, Clock } from "lucide-react";
+import { useRef, useState } from "react";
+import { MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+import { toast } from "sonner";
+
+const messengerOptions = [
+  { value: "whatsapp", label: "WhatsApp" },
+  { value: "telegram", label: "Telegram" },
+  { value: "wechat", label: "WeChat" },
+  { value: "line", label: "LINE" },
+] as const;
+
+const programOptions = [
+  "암 집중 치료",
+  "면역력 강화",
+  "디톡스 프로그램",
+  "만성질환 관리",
+  "수술 후 회복",
+  "기타",
+] as const;
+
+const formSchema = z.object({
+  name: z.string().trim().min(1, "이름을 입력해주세요").max(100),
+  email: z.string().trim().email("올바른 이메일을 입력해주세요").max(255),
+  messenger_type: z.string().min(1, "메신저를 선택해주세요"),
+  messenger_id: z.string().trim().min(1, "메신저 ID를 입력해주세요").max(200),
+  interested_programs: z.array(z.string()).optional(),
+  preferred_timing: z.string().max(200).optional(),
+  message: z.string().trim().max(2000).optional(),
+});
 
 const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    messenger_type: "",
+    messenger_id: "",
+    interested_programs: [] as string[],
+    preferred_timing: "",
+    message: "",
+  });
+
+  const toggleProgram = (program: string) => {
+    setForm((prev) => ({
+      ...prev,
+      interested_programs: prev.interested_programs.includes(program)
+        ? prev.interested_programs.filter((p) => p !== program)
+        : [...prev.interested_programs, program],
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const result = formSchema.safeParse(form);
+    if (!result.success) {
+      const firstError = result.error.errors[0]?.message;
+      toast.error(firstError || "입력 내용을 확인해주세요.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from("consultation_inquiries")
+        .insert({
+          name: result.data.name,
+          email: result.data.email,
+          messenger_type: result.data.messenger_type,
+          messenger_id: result.data.messenger_id,
+          interested_programs: result.data.interested_programs?.length
+            ? result.data.interested_programs
+            : null,
+          preferred_timing: result.data.preferred_timing || null,
+          message: result.data.message || null,
+        });
+
+      if (error) throw error;
+      setIsSubmitted(true);
+    } catch {
+      toast.error("접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const inputClasses =
+    "w-full px-4 py-3 rounded-xl bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all";
 
   return (
     <section id="contact" className="py-24 lg:py-32 bg-primary text-primary-foreground" ref={ref}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-semibold tracking-widest uppercase text-gold">
-            Contact & CTA
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            지금 바로 회복을 시작하세요
-          </h2>
-          <p className="text-lg text-primary-foreground/70 mb-10">
-            카카오톡 또는 LINE으로 문의주시면 24시간 내 전담 상담사가 연락드립니다.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-xl bg-gold text-gold-foreground font-semibold text-lg shadow-gold hover:opacity-90 transition-all"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3C6.5 3 2 6.58 2 11c0 2.83 1.82 5.32 4.56 6.75-.16.98-.55 2.56-1.53 3.56 0 0 2.82-.49 4.9-2.15.69.1 1.39.16 2.07.16 5.5 0 10-3.58 10-8s-4.5-8-10-8z"/>
-              </svg>
-              카카오톡으로 상담하기
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-xl border-2 border-primary-foreground/30 text-primary-foreground font-semibold text-lg hover:bg-primary-foreground/10 transition-all"
-            >
-              LINE으로 문의하기
-            </a>
+          <div className="text-center mb-12">
+            <span className="text-sm font-semibold tracking-widest uppercase text-gold">
+              Consultation
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-4">
+              지금 바로 회복을 시작하세요
+            </h2>
+            <p className="text-lg text-primary-foreground/70">
+              아래 양식을 작성해주시면 24시간 내 전담 상담사가 연락드립니다.
+            </p>
           </div>
 
+          {isSubmitted ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-16"
+            >
+              <CheckCircle className="w-16 h-16 text-gold mx-auto mb-6" />
+              <h3 className="font-serif text-2xl font-bold mb-3">
+                상담 접수가 완료되었습니다
+              </h3>
+              <p className="text-primary-foreground/70">
+                24시간 내에 선택하신 메신저로 연락드리겠습니다.
+              </p>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name & Email */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-primary-foreground/80 mb-2">
+                    이름 <span className="text-gold">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Your name"
+                    className={inputClasses}
+                    required
+                    maxLength={100}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-primary-foreground/80 mb-2">
+                    이메일 <span className="text-gold">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="your@email.com"
+                    className={inputClasses}
+                    required
+                    maxLength={255}
+                  />
+                </div>
+              </div>
 
-          <div className="p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10">
+              {/* Messenger */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-primary-foreground/80 mb-2">
+                    메신저 선택 <span className="text-gold">*</span>
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {messengerOptions.map((m) => (
+                      <button
+                        key={m.value}
+                        type="button"
+                        onClick={() => setForm({ ...form, messenger_type: m.value })}
+                        className={`px-4 py-3 rounded-xl border text-sm font-medium transition-all ${
+                          form.messenger_type === m.value
+                            ? "bg-gold text-gold-foreground border-gold"
+                            : "bg-primary-foreground/5 border-primary-foreground/20 text-primary-foreground/70 hover:border-gold/50"
+                        }`}
+                      >
+                        {m.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-primary-foreground/80 mb-2">
+                    메신저 ID <span className="text-gold">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={form.messenger_id}
+                    onChange={(e) => setForm({ ...form, messenger_id: e.target.value })}
+                    placeholder="Messenger ID or phone number"
+                    className={inputClasses}
+                    required
+                    maxLength={200}
+                  />
+                </div>
+              </div>
+
+              {/* Programs */}
+              <div>
+                <label className="block text-sm font-medium text-primary-foreground/80 mb-2">
+                  관심 프로그램 (복수 선택 가능)
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {programOptions.map((program) => (
+                    <button
+                      key={program}
+                      type="button"
+                      onClick={() => toggleProgram(program)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
+                        form.interested_programs.includes(program)
+                          ? "bg-gold text-gold-foreground border-gold"
+                          : "bg-primary-foreground/5 border-primary-foreground/20 text-primary-foreground/70 hover:border-gold/50"
+                      }`}
+                    >
+                      {program}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Timing */}
+              <div>
+                <label className="block text-sm font-medium text-primary-foreground/80 mb-2">
+                  희망 입원 시기
+                </label>
+                <input
+                  type="text"
+                  value={form.preferred_timing}
+                  onChange={(e) => setForm({ ...form, preferred_timing: e.target.value })}
+                  placeholder="예: 2026년 4월, 가능한 빨리, 미정 등"
+                  className={inputClasses}
+                  maxLength={200}
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block text-sm font-medium text-primary-foreground/80 mb-2">
+                  상담 내용
+                </label>
+                <textarea
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  placeholder="증상, 진단명, 궁금한 점 등 자유롭게 작성해주세요"
+                  rows={4}
+                  className={inputClasses + " resize-none"}
+                  maxLength={2000}
+                />
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-3 px-10 py-4 rounded-xl bg-gold text-gold-foreground font-semibold text-lg shadow-gold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Send className="w-5 h-5" />
+                {isSubmitting ? "접수 중..." : "상담 접수하기"}
+              </button>
+
+              <p className="text-center text-xs text-primary-foreground/40">
+                입력하신 정보는 상담 목적으로만 사용됩니다.
+              </p>
+            </form>
+          )}
+
+          {/* Location & Hours */}
+          <div className="mt-16 p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10">
             <div className="grid sm:grid-cols-2 gap-8">
               <div>
-                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2"><MapPin className="w-4 h-4 text-gold" /> 위치</h4>
+                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-gold" /> 위치
+                </h4>
                 <p className="text-sm text-primary-foreground/60">
                   서울특별시 (강서 · 광명 · 신촌 · 성동)
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2"><Clock className="w-4 h-4 text-gold" /> 운영시간</h4>
+                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-gold" /> 운영시간
+                </h4>
                 <p className="text-sm text-primary-foreground/60">
                   평일 09:00–20:00 | 주말·공휴일 09:00–15:00 KST
                 </p>
@@ -60,7 +292,7 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <p className="mt-8 text-xs text-primary-foreground/40">
+          <p className="mt-8 text-center text-xs text-primary-foreground/40">
             치료 효과는 개인에 따라 다를 수 있습니다. 모든 프로그램은 의료진 진단 후 제공됩니다.
           </p>
         </motion.div>
