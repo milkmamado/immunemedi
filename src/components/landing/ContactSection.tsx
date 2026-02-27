@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -266,26 +266,19 @@ const ContactSection = () => {
             </form>
           )}
 
-          {/* Location & Hours */}
-          <div className="mt-16 p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10">
-            <div className="grid sm:grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-gold" /> 위치
-                </h4>
-                <p className="text-sm text-primary-foreground/60">
-                  서울·경기 (강서 · 광명 · 신촌 · 성동)
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-primary-foreground mb-2 flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-gold" /> 운영시간
-                </h4>
-                <p className="text-sm text-primary-foreground/60">
-                  평일 09:00–20:00 | 주말·공휴일 09:00–15:00 KST
-                </p>
-              </div>
-            </div>
+          {/* Google Maps */}
+          <div className="mt-16 rounded-2xl overflow-hidden border border-primary-foreground/10">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.5!2d126.85!3d37.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDMzJzAwLjAiTiAxMjbCsDUxJzAwLjAiRQ!5e0!3m2!1sen!2skr!4v1700000000000"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Hospital Location"
+              className="w-full"
+            />
           </div>
 
         </motion.div>
