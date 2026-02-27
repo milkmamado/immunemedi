@@ -116,35 +116,40 @@ const ImageEditorOverlay = ({ treatmentKey, defaultSrc, onClose }: ImageEditorOv
               type="range"
               min={50}
               max={300}
+              step={1}
               value={settings.scale}
-              onChange={(e) => update({ scale: Number(e.target.value) })}
+              onInput={(e) => update({ scale: Number((e.target as HTMLInputElement).value) })}
               className="w-full accent-primary"
             />
           </label>
 
           {/* Position X */}
           <label className="block">
-            <span className="text-xs font-medium text-muted-foreground mb-1 block">가로 위치 ({settings.posX}%)</span>
+            <span className="text-xs font-medium text-muted-foreground mb-1 block">가로 위치 ({settings.posX}%) {settings.fit === "contain" && "— 꽉채움 모드에서만 작동"}</span>
             <input
               type="range"
               min={0}
               max={100}
+              step={1}
               value={settings.posX}
-              onChange={(e) => update({ posX: Number(e.target.value) })}
+              onInput={(e) => update({ posX: Number((e.target as HTMLInputElement).value) })}
               className="w-full accent-primary"
+              disabled={settings.fit === "contain"}
             />
           </label>
 
           {/* Position Y */}
           <label className="block">
-            <span className="text-xs font-medium text-muted-foreground mb-1 block">세로 위치 ({settings.posY}%)</span>
+            <span className="text-xs font-medium text-muted-foreground mb-1 block">세로 위치 ({settings.posY}%) {settings.fit === "contain" && "— 꽉채움 모드에서만 작동"}</span>
             <input
               type="range"
               min={0}
               max={100}
+              step={1}
               value={settings.posY}
-              onChange={(e) => update({ posY: Number(e.target.value) })}
+              onInput={(e) => update({ posY: Number((e.target as HTMLInputElement).value) })}
               className="w-full accent-primary"
+              disabled={settings.fit === "contain"}
             />
           </label>
 
