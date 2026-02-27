@@ -87,6 +87,7 @@ const ProgramsSection = () => {
     src: t.image,
     alt: t.title,
     caption: `${t.title} — ${t.desc}`,
+    title: t.title,
   }));
 
   const handleTabClick = (tabId: string) => {

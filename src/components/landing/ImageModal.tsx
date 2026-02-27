@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getImageSettings } from "./ImageEditorOverlay";
 
 interface ImageModalProps {
-  images: { src: string; alt: string; caption?: string }[];
+  images: { src?: string; alt: string; caption?: string; title?: string }[];
   initialIndex?: number;
   isOpen: boolean;
   onClose: () => void;
@@ -70,16 +71,32 @@ const ImageModal = ({ images, initialIndex = 0, isOpen, onClose }: ImageModalPro
             {/* Image */}
             <div className="relative overflow-hidden rounded-2xl bg-foreground/50">
               <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentIndex}
-                  src={current.src}
-                  alt={current.alt}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.25 }}
-                  className="w-full max-h-[75vh] object-contain"
-                />
+                {(() => {
+                  const saved = current.title ? getImageSettings(current.title) : { src: "", fit: "cover" as const, posX: 50, posY: 50, scale: 100 };
+                  const imgSrc = (saved.src || current.src) ?? "";
+                  return (
+                    <motion.div
+                      key={currentIndex}
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -50 }}
+                      transition={{ duration: 0.25 }}
+                      className="aspect-square w-full max-w-[75vh] mx-auto"
+                    >
+                      <img
+                        src={imgSrc}
+                        alt={current.alt}
+                        className="w-full h-full"
+                        style={{
+                          objectFit: saved.fit || "cover",
+                          objectPosition: `${saved.posX ?? 50}% ${saved.posY ?? 50}%`,
+                          transform: `scale(${(saved.scale || 100) / 100})`,
+                          transformOrigin: `${saved.posX ?? 50}% ${saved.posY ?? 50}%`,
+                        }}
+                      />
+                    </motion.div>
+                  );
+                })()}
               </AnimatePresence>
             </div>
 
