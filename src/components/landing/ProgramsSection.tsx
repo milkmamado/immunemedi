@@ -3,6 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronRight, ClipboardCheck, TestTube, Stethoscope, Microscope } from "lucide-react";
 import { type LucideIcon } from "lucide-react";
 import ImageModal from "./ImageModal";
+import ImageEditorOverlay, { getImageSettings } from "./ImageEditorOverlay";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 import treatHyperthermia from "@/assets/treat-hyperthermia.jpg";
