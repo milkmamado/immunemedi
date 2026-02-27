@@ -47,17 +47,18 @@ const diagnostics: Treatment[] = [
   { title: "비타민 검사", icon: TestTube, desc: "일반적인 비타민D 검사를 비롯하여 신경염 회복 및 신경세포 재생에 필수적인 비타민 B1, B6, B12와 면역력에 필수적인 비타민C, 대표적인 항산화제인 셀레늄 검사 진행" },
 ];
 
-const lifeCare: Treatment[] = [
-  { title: "암종별 치료식이", desc: "위암 위절제식, 갑상선 저요오드식, 대장암 저잔사식 등 맞춤 식단", image: "/placeholder.svg" },
-  { title: "힐링 프로그램", desc: "몸의 치유를 넘어 마음의 회복까지, 온전한 돌봄", image: "/placeholder.svg" },
-  { title: "림프관리 프로그램", desc: "항암 후 림프부종 완화, 피부 진정·보습, 체형 교정", image: "/placeholder.svg" },
+const mealCare: Treatment[] = [
+  { title: "표준 항암식", icon: ClipboardCheck, desc: "부작용을 줄이고 항암 치료로 손상된 조직을 회복할 수 있도록 돕는 표준 치료식사" },
+  { title: "위암 — 위절제식", icon: ClipboardCheck, desc: "위 절제 수술 후 소화 부담을 최소화한 맞춤 식단" },
+  { title: "갑상선암 — 저요오드식", icon: ClipboardCheck, desc: "방사성 요오드 치료 전후 요오드 섭취를 제한한 식단" },
+  { title: "대장암 — 저잔사식", icon: ClipboardCheck, desc: "장에 부담을 줄이고 소화 흡수를 돕는 저잔사 식단" },
 ];
 
 const tabs = [
   { id: "western", label: "양방 면역암치료", sub: "Western Immuno-Oncology", data: westernTreatments },
   { id: "oriental", label: "한방 면역암치료", sub: "Korean Medicine Oncology", data: orientalTreatments },
   { id: "diagnostics", label: "진단검사", sub: "Diagnostic Tests", data: diagnostics },
-  { id: "life", label: "생활·식이·힐링", sub: "Life & Healing Care", data: lifeCare },
+  { id: "meal", label: "암종별 치료식 제공", sub: "Cancer-Specific Therapeutic Meals", data: mealCare },
 ] as const;
 
 const ProgramsSection = () => {
