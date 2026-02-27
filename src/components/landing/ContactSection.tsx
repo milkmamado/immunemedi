@@ -42,11 +42,6 @@ const ContactSection = () => {
             </a>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-primary-foreground/60 mb-12">
-            <span>한국어 · 영어 · 베트남어 상담 가능</span>
-            <span className="hidden sm:inline">|</span>
-            <span>입원 문의 · 프로그램 · 비용 모두 상담 가능</span>
-          </div>
 
           <div className="p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10">
             <div className="grid sm:grid-cols-2 gap-8">
