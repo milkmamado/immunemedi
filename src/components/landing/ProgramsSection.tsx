@@ -169,8 +169,7 @@ const ProgramsSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className={`group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card ${t.image ? "cursor-pointer" : ""}`}
-                    onClick={() => t.image && openCard(i)}
+                    className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card"
                   >
                     {/* Image or Icon header */}
                     {t.image ? (
