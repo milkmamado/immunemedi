@@ -58,7 +58,7 @@ const tabs = [
   { id: "western", label: "양방 면역암치료", sub: "Western Immuno-Oncology", data: westernTreatments },
   { id: "oriental", label: "한방 면역암치료", sub: "Korean Medicine Oncology", data: orientalTreatments },
   { id: "diagnostics", label: "진단검사", sub: "Diagnostic Tests", data: diagnostics },
-  { id: "life", label: "생활·식이·힐링", sub: "Life & Healing Care", data: lifeCare },
+  { id: "meal", label: "암종별 치료식 제공", sub: "Cancer-Specific Therapeutic Meals", data: mealCare },
 ] as const;
 
 const ProgramsSection = () => {
