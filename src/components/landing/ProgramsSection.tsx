@@ -173,11 +173,11 @@ const ProgramsSection = () => {
                   >
                     {/* Image or Icon header */}
                     {t.image ? (
-                      <div className="relative h-36 overflow-hidden bg-muted">
+                      <div className="relative h-36 overflow-hidden bg-muted flex items-center justify-center">
                         <img
                           src={t.image}
                           alt={t.title}
-                          className={`w-full h-full object-cover ${t.image === treatManual ? 'scale-125' : ''}`}
+                          className={`max-w-full max-h-full object-contain ${t.image === treatManual ? 'scale-125' : ''}`}
                           style={
                             t.image === treatHyperthermia ? { objectPosition: 'center 20%' } :
                             t.image === treatManual ? { objectPosition: 'center center' } :
