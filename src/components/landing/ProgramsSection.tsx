@@ -176,47 +176,29 @@ const ProgramsSection = () => {
                     className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card"
                   >
                     {/* Image or Icon header */}
-                    {t.image ? (() => {
-                      const saved = getImageSettings(t.title);
-                      const imgSrc = saved.src || t.image;
-                      return (
-                        <div
-                          className="relative aspect-square overflow-hidden bg-muted cursor-pointer"
-                          onClick={() => setEditingKey(t.title)}
-                          title="클릭하여 이미지 편집"
-                        >
-                          <img
-                            src={imgSrc}
-                            alt={t.title}
-                            className="w-full h-full"
-                            style={{
-                              objectFit: saved.fit || "cover",
-                              objectPosition: `${saved.posX ?? 50}% ${saved.posY ?? 50}%`,
-                              transform: `scale(${(saved.scale || 100) / 100})`,
-                              transformOrigin: `${saved.posX ?? 50}% ${saved.posY ?? 50}%`,
-                            }}
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
-                          {/* Text overlay at bottom */}
-                          <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-card/80 backdrop-blur-sm h-[4.5rem] flex flex-col justify-center">
-                            <h3 className="font-serif text-sm font-bold text-foreground leading-tight">
-                              {t.title}
-                            </h3>
-                            <p className="text-xs text-muted-foreground leading-snug mt-0.5">
-                              {t.desc}
-                            </p>
-                          </div>
-                          {/* Edit icon */}
-                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-                              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-                            </svg>
-                          </div>
+                    {t.image ? (
+                      <div
+                        className="relative aspect-square overflow-hidden bg-muted cursor-pointer"
+                        onClick={() => openCard(i)}
+                      >
+                        <img
+                          src={t.image}
+                          alt={t.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+                        {/* Text overlay at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-card/80 backdrop-blur-sm h-[4.5rem] flex flex-col justify-center">
+                          <h3 className="font-serif text-sm font-bold text-foreground leading-tight">
+                            {t.title}
+                          </h3>
+                          <p className="text-xs text-muted-foreground leading-snug mt-0.5">
+                            {t.desc}
+                          </p>
                         </div>
-                      );
-                    })() : null}
+                      </div>
+                    ) : null}
 
                     {/* Text section for non-image items only */}
                     {!t.image && (
