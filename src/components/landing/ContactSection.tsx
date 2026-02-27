@@ -289,9 +289,6 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <p className="mt-8 text-center text-xs text-primary-foreground/40">
-            치료 효과는 개인에 따라 다를 수 있습니다. 모든 프로그램은 의료진 진단 후 제공됩니다.
-          </p>
         </motion.div>
       </div>
     </section>
