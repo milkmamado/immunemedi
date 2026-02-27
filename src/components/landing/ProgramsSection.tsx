@@ -32,7 +32,7 @@ const westernTreatments: Treatment[] = [
   { title: "미슬토 요법", desc: "암세포의 증식을 억제시켜 사멸에 도움, 항암물질 및 면역기능을 증가시키는 물질 함유", image: treatMistletoe },
   { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 감소", image: treatMesima },
   { title: "글루타민 요법", desc: "면역세포의 기능 향상 및 단백질 합성을 통해 근손실을 예방하며 항암치료 부작용에 효과", image: treatGlutamine },
-  { title: "NK세포치료제", desc: "몸속 면역세포를 배양시킨 살해 세포로써 암세포만을 선택적으로 공격. 환자 본인에게만 투여할 수 있는 항암제로, 수술 이후의 미세암 제거에도 도움", image: "/placeholder.svg" },
+  { title: "NK세포치료제", desc: "몸속 면역세포를 배양시킨 살해 세포로써 암세포만을 선택적으로 공격. 환자 본인에게만 투여할 수 있는 항암제로, 수술 이후의 미세암 제거에도 도움", image: treatNkCell },
   { title: "고농도 비타민 요법 (비타민 C)", desc: "단백질 대사에 필요한 수용성 비타민. 메스꺼움을 줄여주고 항노화 핵산의 합성을 촉진하며 근육경련, 말초신경 염증을 완화", image: "/placeholder.svg" },
   { title: "글루타치온", desc: "영양제가 몸속에서 효과적으로 작용 촉진, 항암제로 인한 신경성 통증 감소에 효과, 중금속·방사선 등의 해독작용", image: "/placeholder.svg" },
   { title: "셀레늄 요법", desc: "체내의 활성산소를 제거하고 항산화 작용을 활성화. 비타민E의 2,000배에 달하는 효과로 암세포의 자연사멸을 유도", image: "/placeholder.svg" },
