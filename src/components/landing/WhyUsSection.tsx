@@ -7,7 +7,7 @@ import { type LucideIcon } from "lucide-react";
 const strengths: { icon: LucideIcon; title: string; locations?: string; subtitle?: string; desc: string }[] = [
   {
     icon: Building2,
-    title: "서울 4개 지점 운영",
+    title: <>서울 <span className="font-sans">4</span>개 지점 운영</>,
     locations: "강서 · 광명 · 신촌 · 성동",
     desc: "검증된 네트워크, 탄탄한 임상 인프라",
   },
