@@ -119,6 +119,13 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', serif;
   }
+
+  /* 숫자는 항상 Noto Sans KR (font-sans)로 렌더링 */
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    unicode-range: U+0030-0039, U+002B, U+0025, U+002C, U+002E;
+    src: local('Noto Sans KR');
+  }
 }
 
 @layer utilities {
