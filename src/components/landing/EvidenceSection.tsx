@@ -2,6 +2,9 @@ import { motion, useInView, useMotionValue, useTransform, animate } from "framer
 import { useRef, useEffect, useState } from "react";
 import { FileBarChart, ChevronLeft, ChevronRight } from "lucide-react";
 
+import evidenceStatsBg from "@/assets/evidence-stats-bg.jpg";
+import evidenceResearch from "@/assets/evidence-research.jpg";
+
 function CountUp({ target, suffix, inView }: { target: number; suffix: string; inView: boolean }) {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) =>
@@ -48,9 +51,20 @@ const EvidenceSection = () => {
 
   return (
     <div ref={ref}>
-      {/* ── Part 1: Stats — dark navy, no cards, bold numbers ── */}
-      <section className="py-24 lg:py-32 bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── Part 1: Stats — background image with dark overlay ── */}
+      <section className="relative py-24 lg:py-32 text-primary-foreground overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src={evidenceStatsBg}
+            alt="병원 시설"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-primary/85" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -142,9 +156,7 @@ const EvidenceSection = () => {
                   }`}>
                     {s.step}
                   </div>
-                  <div className={`text-xs font-semibold tracking-wider uppercase mb-1 ${
-                    s.highlight ? "text-gold" : "text-gold"
-                  }`}>
+                  <div className="text-xs font-semibold tracking-wider uppercase text-gold mb-1">
                     {s.time}
                   </div>
                   <h4 className={`font-serif text-xl font-bold mb-3 ${
@@ -164,25 +176,45 @@ const EvidenceSection = () => {
         </div>
       </section>
 
-      {/* ── Part 3: Research — back to dark with gold accent border ── */}
-      <section id="evidence" className="py-16 lg:py-20 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── Part 3: Research — image + text side by side ── */}
+      <section id="evidence" className="py-16 lg:py-24 bg-primary text-primary-foreground">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="relative p-8 sm:p-10 rounded-2xl border-l-4 border-gold bg-primary-foreground/5"
+            className="grid md:grid-cols-5 gap-8 items-center"
           >
-            <FileBarChart className="w-8 h-8 text-gold mb-4" />
-            <h4 className="font-serif text-xl sm:text-2xl font-bold text-primary-foreground mb-3">
-              한·양방 협진, 생존율을 높입니다
-            </h4>
-            <p className="text-primary-foreground/70 leading-relaxed mb-4">
-              말기 위암 수술 후 한방 치료를 병행한 환자군에서 생존율이 유의미하게 높아졌다는 임상 연구 결과가 있습니다.
-            </p>
-            <p className="text-sm text-primary-foreground/40 italic">
-              ※ Rao X.Q. et al. (1994). CJITWM, 14(6), 366.
-            </p>
+            {/* Image */}
+            <div className="md:col-span-2 rounded-2xl overflow-hidden">
+              <img
+                src={evidenceResearch}
+                alt="의료진 협진 장면"
+                className="w-full h-64 md:h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Text */}
+            <div className="md:col-span-3 p-2 sm:p-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0">
+                  <FileBarChart className="w-5 h-5 text-gold" />
+                </div>
+                <span className="text-xs font-semibold tracking-widest uppercase text-gold">
+                  Research
+                </span>
+              </div>
+              <h4 className="font-serif text-xl sm:text-2xl font-bold text-primary-foreground mb-3">
+                한·양방 협진, 생존율을 높입니다
+              </h4>
+              <p className="text-primary-foreground/70 leading-relaxed mb-4">
+                말기 위암 수술 후 한방 치료를 병행한 환자군에서 생존율이 유의미하게 높아졌다는 임상 연구 결과가 있습니다.
+              </p>
+              <p className="text-sm text-primary-foreground/40 italic">
+                ※ Rao X.Q. et al. (1994). CJITWM, 14(6), 366.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
