@@ -85,12 +85,6 @@ const categories: Category[] = [
           { title: "고주파온열암치료", desc: "고온 환경에서 암 조직을 민감하게 만들고 면역세포를 활성화하여 항암 면역 반응 강화", image: healTemperature },
         ],
       },
-      {
-        label: "온열요법",
-        items: [
-          { title: "적외선온열요법", desc: "적외선 에너지로 심부 체온을 올려 혈액순환과 면역 활성을 촉진", image: healTemperature },
-        ],
-      },
     ],
   },
   {
