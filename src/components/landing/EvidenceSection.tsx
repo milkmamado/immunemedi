@@ -75,7 +75,7 @@ const EvidenceSection = () => {
               Clinical Evidence
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mt-4">
-              숫자로 증명된 면력의 실력
+              근거 중심 통합의학의 기준
             </h2>
           </motion.div>
 
