@@ -191,6 +191,7 @@ const ProgramsSection = () => {
                               objectFit: saved.fit || "cover",
                               objectPosition: `${saved.posX ?? 50}% ${saved.posY ?? 50}%`,
                               transform: `scale(${(saved.scale || 100) / 100})`,
+                              transformOrigin: `${saved.posX ?? 50}% ${saved.posY ?? 50}%`,
                             }}
                             loading="lazy"
                           />
