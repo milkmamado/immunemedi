@@ -76,6 +76,7 @@ const ProgramsSection = () => {
   const [activeTab, setActiveTab] = useState<string>("western");
   const [modalOpen, setModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
+  const [editingKey, setEditingKey] = useState<string | null>(null);
   const isMobile = useIsMobile();
 
   const activeData = tabs.find((t) => t.id === activeTab)!;
