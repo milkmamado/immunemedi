@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import KoreanLanding from "./pages/KoreanLanding";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({});
 
 const App = () => {
   const [fatalError, setFatalError] = useState<string | null>(null);
