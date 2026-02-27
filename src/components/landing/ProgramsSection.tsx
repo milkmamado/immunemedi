@@ -174,8 +174,12 @@ const ProgramsSection = () => {
                         <img
                           src={t.image}
                           alt={t.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          style={t.image === treatHyperthermia ? { objectPosition: 'center 60%' } : undefined}
+                          className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${t.image === treatManual ? 'scale-125' : ''}`}
+                          style={
+                            t.image === treatHyperthermia ? { objectPosition: 'center 20%' } :
+                            t.image === treatManual ? { objectPosition: 'center center' } :
+                            undefined
+                          }
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
