@@ -198,7 +198,7 @@ const ProgramsSection = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
                           {/* Text overlay at bottom */}
-                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-card/80 backdrop-blur-sm">
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-card/80 backdrop-blur-sm min-h-[5.5rem]">
                             <h3 className="font-serif text-sm font-bold text-foreground leading-snug">
                               {t.title}
                             </h3>
