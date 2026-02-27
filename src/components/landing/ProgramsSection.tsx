@@ -1,55 +1,52 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import {
-  Flame, Wind, Activity, Syringe, ShieldPlus, Pill,
-  FlaskConical, Microscope, Droplets, Leaf, HeartPulse,
-  Stethoscope, TestTube, ClipboardCheck, Apple, Sparkles,
-} from "lucide-react";
-import { type LucideIcon } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import ImageModal from "./ImageModal";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-/* ── treatment data from hospital leaflet ── */
+/* ── Treatment data ── */
 
 interface Treatment {
-  icon: LucideIcon;
   title: string;
   desc: string;
+  image: string; // replace with real imports later
 }
 
 const westernTreatments: Treatment[] = [
-  { icon: Flame, title: "고주파 온열 암치료", desc: "42˚C 이상의 고열로 암세포를 선택적으로 괴사시키는 고주파 항암 치료법" },
-  { icon: Wind, title: "고압 산소치료", desc: "고밀도 산소 흡입으로 저산소 상태를 개선하고 에너지 효율성을 높임" },
-  { icon: Activity, title: "림프순환 / 재활치료", desc: "림프액의 유동성을 증가시켜 면역력을 강화하고 부종을 감소" },
-  { icon: ShieldPlus, title: "싸이모신알파1 요법", desc: "T세포 및 NK세포를 활성화시켜 암세포를 파괴하는 면역조절 치료" },
-  { icon: Leaf, title: "미슬토 요법", desc: "암세포 증식을 억제하고 면역기능을 증가시키는 항암 보조 요법" },
-  { icon: ShieldPlus, title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 감소" },
-  { icon: Pill, title: "글루타민 요법", desc: "근손실을 예방하고 항암치료 부작용을 완화하는 단백질 합성 촉진" },
-  { icon: Microscope, title: "NK세포치료제", desc: "환자 본인의 면역세포를 배양하여 암세포만 선택적으로 공격" },
-  { icon: Syringe, title: "고농도 비타민C 요법", desc: "항노화 핵산 합성을 촉진하고 근육경련·말초신경 염증을 완화" },
-  { icon: FlaskConical, title: "글루타치온", desc: "항암제 부작용 신경성 통증 감소, 중금속·방사선 해독작용" },
-  { icon: Droplets, title: "셀레늄 요법", desc: "비타민E의 2,000배 항산화 효과로 암세포의 자연사멸을 유도" },
-  { icon: HeartPulse, title: "영양관리 요법", desc: "필수 에너지, 지방산, 오메가-3 등 맞춤 영양소 공급" },
+  { title: "고주파 온열 암치료", desc: "42˚C 이상의 고열로 암세포를 선택적으로 괴사시키는 고주파 항암 치료법", image: "/placeholder.svg" },
+  { title: "고압 산소치료", desc: "고밀도 산소 흡입으로 저산소 상태를 개선하고 에너지 효율성을 높임", image: "/placeholder.svg" },
+  { title: "림프순환 / 재활치료", desc: "림프액의 유동성을 증가시켜 면역력을 강화하고 부종을 감소", image: "/placeholder.svg" },
+  { title: "싸이모신알파1 요법", desc: "T세포 및 NK세포를 활성화시켜 암세포를 파괴하는 면역조절 치료", image: "/placeholder.svg" },
+  { title: "미슬토 요법", desc: "암세포 증식을 억제하고 면역기능을 증가시키는 항암 보조 요법", image: "/placeholder.svg" },
+  { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 감소", image: "/placeholder.svg" },
+  { title: "글루타민 요법", desc: "근손실을 예방하고 항암치료 부작용을 완화하는 단백질 합성 촉진", image: "/placeholder.svg" },
+  { title: "NK세포치료제", desc: "환자 본인의 면역세포를 배양하여 암세포만 선택적으로 공격", image: "/placeholder.svg" },
+  { title: "고농도 비타민C 요법", desc: "항노화 핵산 합성을 촉진하고 근육경련·말초신경 염증을 완화", image: "/placeholder.svg" },
+  { title: "글루타치온", desc: "항암제 부작용 신경성 통증 감소, 중금속·방사선 해독작용", image: "/placeholder.svg" },
+  { title: "셀레늄 요법", desc: "비타민E의 2,000배 항산화 효과로 암세포의 자연사멸을 유도", image: "/placeholder.svg" },
+  { title: "영양관리 요법", desc: "필수 에너지, 지방산, 오메가-3 등 맞춤 영양소 공급", image: "/placeholder.svg" },
 ];
 
 const orientalTreatments: Treatment[] = [
-  { icon: Leaf, title: "항암단", desc: "곡기생, 산자고, 삼칠근 등으로 종양 활성 억제 및 담음·어혈 제거" },
-  { icon: ShieldPlus, title: "면역플러스", desc: "황기 부정단 처방으로 종양 면역세포 활성화 촉진 및 골수기능 개선" },
-  { icon: FlaskConical, title: "항암플러스", desc: "옻나무 진액에서 추출한 루시올(Urushiol)로 암 치료 효과 증진" },
-  { icon: Pill, title: "신종단", desc: "공개 특허 항암단 기반, 림프순환장애 및 부종 치료 목적의 가감 처방" },
-  { icon: HeartPulse, title: "청간플러스", desc: "간 기능 개선, 과산화지질 생성 감소, 중성지방 수치 감소" },
-  { icon: Syringe, title: "면역약침", desc: "멸균 한약재를 침으로 직접 투여 — 약과 침의 동시 효과" },
+  { title: "항암단", desc: "곡기생, 산자고, 삼칠근 등으로 종양 활성 억제 및 담음·어혈 제거", image: "/placeholder.svg" },
+  { title: "면역플러스", desc: "황기 부정단 처방으로 종양 면역세포 활성화 촉진 및 골수기능 개선", image: "/placeholder.svg" },
+  { title: "항암플러스", desc: "옻나무 진액에서 추출한 루시올(Urushiol)로 암 치료 효과 증진", image: "/placeholder.svg" },
+  { title: "신종단", desc: "공개 특허 항암단 기반, 림프순환장애 및 부종 치료 목적의 가감 처방", image: "/placeholder.svg" },
+  { title: "청간플러스", desc: "간 기능 개선, 과산화지질 생성 감소, 중성지방 수치 감소", image: "/placeholder.svg" },
+  { title: "면역약침", desc: "멸균 한약재를 침으로 직접 투여 — 약과 침의 동시 효과", image: "/placeholder.svg" },
 ];
 
 const diagnostics: Treatment[] = [
-  { icon: ClipboardCheck, title: "종양표지자 검사", desc: "혈액에서 암세포 존재 유무를 감별하고 종양 크기를 추정" },
-  { icon: TestTube, title: "비타민 검사", desc: "B1·B6·B12·C·D 및 셀레늄 수치를 종합 분석" },
-  { icon: Stethoscope, title: "항암호중구 수치 검사", desc: "절대 호중구 수를 파악하여 면역 체계 이상 유무 진단" },
-  { icon: Microscope, title: "NK 활성도 검사", desc: "NK세포(자연살해 세포)의 활성도를 측정하여 현 면역 상태 진단" },
+  { title: "종양표지자 검사", desc: "혈액에서 암세포 존재 유무를 감별하고 종양 크기를 추정", image: "/placeholder.svg" },
+  { title: "비타민 검사", desc: "B1·B6·B12·C·D 및 셀레늄 수치를 종합 분석", image: "/placeholder.svg" },
+  { title: "항암호중구 수치 검사", desc: "절대 호중구 수를 파악하여 면역 체계 이상 유무 진단", image: "/placeholder.svg" },
+  { title: "NK 활성도 검사", desc: "NK세포(자연살해 세포)의 활성도를 측정하여 현 면역 상태 진단", image: "/placeholder.svg" },
 ];
 
 const lifeCare: Treatment[] = [
-  { icon: Apple, title: "암종별 치료식이", desc: "위암 위절제식, 갑상선 저요오드식, 대장암 저잔사식 등 맞춤 식단" },
-  { icon: Sparkles, title: "힐링 프로그램", desc: "몸의 치유를 넘어 마음의 회복까지, 온전한 돌봄" },
-  { icon: Activity, title: "림프관리 프로그램", desc: "항암 후 림프부종 완화, 피부 진정·보습, 체형 교정" },
+  { title: "암종별 치료식이", desc: "위암 위절제식, 갑상선 저요오드식, 대장암 저잔사식 등 맞춤 식단", image: "/placeholder.svg" },
+  { title: "힐링 프로그램", desc: "몸의 치유를 넘어 마음의 회복까지, 온전한 돌봄", image: "/placeholder.svg" },
+  { title: "림프관리 프로그램", desc: "항암 후 림프부종 완화, 피부 진정·보습, 체형 교정", image: "/placeholder.svg" },
 ];
 
 const tabs = [
@@ -63,8 +60,31 @@ const ProgramsSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [activeTab, setActiveTab] = useState<string>("western");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
+  const isMobile = useIsMobile();
 
   const activeData = tabs.find((t) => t.id === activeTab)!;
+
+  // Build modal slides from active tab data
+  const modalImages = activeData.data.map((t) => ({
+    src: t.image,
+    alt: t.title,
+    caption: `${t.title} — ${t.desc}`,
+  }));
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    if (isMobile) {
+      setModalIndex(0);
+      setModalOpen(true);
+    }
+  };
+
+  const openCard = (index: number) => {
+    setModalIndex(index);
+    setModalOpen(true);
+  };
 
   return (
     <section id="programs" className="py-24 lg:py-32 bg-background" ref={ref}>
@@ -87,7 +107,7 @@ const ProgramsSection = () => {
           </p>
         </motion.div>
 
-        {/* Tabs */}
+        {/* Tab buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -97,60 +117,116 @@ const ProgramsSection = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+              onClick={() => handleTabClick(tab.id)}
+              className={`group flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
                 activeTab === tab.id
                   ? "bg-primary text-primary-foreground border-primary shadow-gold"
                   : "bg-card text-foreground border-border hover:border-gold/40"
               }`}
             >
               {tab.label}
+              {/* Mobile: show arrow hint */}
+              <ChevronRight className="w-4 h-4 sm:hidden opacity-50" />
             </button>
           ))}
         </motion.div>
 
-        {/* Tab subtitle */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-          >
-            <p className="text-center text-xs tracking-widest uppercase text-gold mb-8">
-              {activeData.sub}
-            </p>
+        {/* Desktop: Cards grid with images */}
+        <div className="hidden sm:block">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="text-center text-xs tracking-widest uppercase text-gold mb-8">
+                {activeData.sub}
+              </p>
 
-            {/* Cards grid */}
-            <div className={`grid gap-4 ${
-              activeData.data.length <= 4
-                ? "sm:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto"
-                : "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            }`}>
-              {activeData.data.map((t, i) => (
-                <motion.div
-                  key={t.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: i * 0.05 }}
-                  className="group bg-card rounded-2xl p-6 border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
-                    <t.icon className="w-5 h-5 text-gold" />
-                  </div>
-                  <h3 className="font-serif text-base font-bold text-foreground mb-2 leading-snug">
-                    {t.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {t.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
+              <div className={`grid gap-5 ${
+                activeData.data.length <= 4
+                  ? "sm:grid-cols-2 max-w-4xl mx-auto"
+                  : "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              }`}>
+                {activeData.data.map((t, i) => (
+                  <motion.div
+                    key={t.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35, delay: i * 0.05 }}
+                    className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card cursor-pointer"
+                    onClick={() => openCard(i)}
+                  >
+                    {/* Image */}
+                    <div className="relative h-36 overflow-hidden bg-muted">
+                      <img
+                        src={t.image}
+                        alt={t.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                      {/* Expand icon */}
+                      <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <h3 className="font-serif text-base font-bold text-foreground mb-2 leading-snug">
+                        {t.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {t.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile: Show summary counts per tab */}
+        <div className="sm:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-center"
+            >
+              <p className="text-xs tracking-widest uppercase text-gold mb-3">
+                {activeData.sub}
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                총 <span className="font-sans font-bold text-foreground">{activeData.data.length}</span>가지 치료 항목
+              </p>
+              <button
+                onClick={() => { setModalIndex(0); setModalOpen(true); }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-gold hover:bg-primary/90 transition-colors"
+              >
+                치료 프로그램 보기
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
+
+      {/* Modal for both mobile slide-through and desktop image zoom */}
+      <ImageModal
+        images={modalImages}
+        initialIndex={modalIndex}
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </section>
   );
 };
