@@ -10,6 +10,7 @@ import healImmunity5 from "@/assets/heal-immunity-5.png";
 import healImmunity6 from "@/assets/heal-immunity-6.png";
 import healImmunity7 from "@/assets/heal-immunity-7.png";
 import healTemperature from "@/assets/heal-temperature.jpg";
+import healHyperthermiaDevice from "@/assets/heal-hyperthermia-device.png";
 import healCirculation from "@/assets/heal-circulation.jpg";
 import healResist1 from "@/assets/heal-resist-1.png";
 import healResist2 from "@/assets/heal-resist-2.png";
@@ -256,6 +257,17 @@ const ProgramsSection = () => {
                       className="overflow-hidden"
                     >
                       <div className="px-5 sm:px-7 pb-6 sm:pb-8 pt-2 space-y-8">
+                        {/* Temperature hero image */}
+                        {cat.id === "temperature" && (
+                          <div className="rounded-xl overflow-hidden">
+                            <img
+                              src={healHyperthermiaDevice}
+                              alt="고주파온열암치료 장비"
+                              className="w-full h-48 sm:h-64 object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
                         {cat.subCategories.map((sub) => (
                           <div key={sub.label}>
                             {/* Subcategory label */}
