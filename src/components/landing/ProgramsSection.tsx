@@ -260,14 +260,6 @@ const ProgramsSection = () => {
         onClose={() => setModalOpen(false)}
       />
 
-      {/* Image Editor Overlay */}
-      {editingKey && (
-        <ImageEditorOverlay
-          treatmentKey={editingKey}
-          defaultSrc={activeData.data.find((t) => t.title === editingKey)?.image}
-          onClose={() => setEditingKey(null)}
-        />
-      )}
     </section>
   );
 };
