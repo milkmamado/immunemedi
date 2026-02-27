@@ -35,6 +35,7 @@ interface Treatment {
 
 interface SubCategory {
   label: string;
+  desc?: string;
   items: Treatment[];
 }
 
@@ -144,20 +145,22 @@ const categories: Category[] = [
     subCategories: [
       {
         label: "치료식이",
+        desc: "적절한 영양을 제공하여 치료 기간 동안 부작용을 줄이고 항암 치료로 손상된 조직을 회복하며, 영양 상태와 적정 체중을 유지할 수 있도록 돕는 식사를 제공합니다.",
         items: [
-          { title: "표준 항암식", desc: "부작용을 줄이고 항암 치료로 손상된 조직을 회복하는 치료식사", image: healNutrition1 },
-          { title: "영양 관리", desc: "적절한 영양 제공으로 영양 상태와 적정 체중 유지", image: healNutrition2 },
+          { title: "표준 항암식", desc: "", image: healNutrition1 },
+          { title: "영양 관리", desc: "", image: healNutrition2 },
         ],
       },
       {
         label: "맞춤식이",
+        desc: "환우분들의 기호에 맞춘 30여 종 면역 회복 선택식 제공",
         items: [
-          { title: "셰프 라이브 코너", desc: "환우분들의 기호에 맞춘 면역 회복 선택식", image: healNutrition3 },
-          { title: "항암 맞춤 코너", desc: "암종별 맞춤 식단 제공", image: healNutrition4 },
-          { title: "항암 쌈채소 코너", desc: "신선한 유기농 쌈채소 제공", image: healNutrition5 },
-          { title: "제철 과일 코너", desc: "계절별 신선한 과일 제공", image: healNutrition6 },
-          { title: "수제 건강음료 코너", desc: "면역 증진을 위한 수제 음료", image: healNutrition7 },
-          { title: "비빔밥 코너", desc: "영양 균형 맞춤 비빔밥", image: healNutrition8 },
+          { title: "셰프 라이브 코너", desc: "", image: healNutrition3 },
+          { title: "항암 맞춤 코너", desc: "", image: healNutrition4 },
+          { title: "항암 쌈채소 코너", desc: "", image: healNutrition5 },
+          { title: "제철 과일 코너", desc: "", image: healNutrition6 },
+          { title: "수제 건강음료 코너", desc: "", image: healNutrition7 },
+          { title: "비빔밥 코너", desc: "", image: healNutrition8 },
         ],
       },
     ],
@@ -287,15 +290,51 @@ const ProgramsSection = () => {
                         {cat.subCategories.map((sub) => (
                           <div key={sub.label}>
                             {/* Subcategory label */}
-                            <div className="flex items-center gap-2.5 mb-4">
+                            <div className="flex items-center gap-2.5 mb-2">
                               <div className="w-0.5 h-5 rounded-full bg-gold" />
                               <h4 className="text-sm sm:text-base font-bold text-foreground">
                                 {sub.label}
                               </h4>
                             </div>
 
+                            {/* Subcategory description */}
+                            {sub.desc && (
+                              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 ml-3">
+                                {sub.desc}
+                              </p>
+                            )}
+
                             {/* Treatment items */}
-                            {(cat.id === "temperature" || cat.id === "circulation") ? (
+                            {cat.id === "nutrition" ? (
+                              /* Nutrition: image grid only */
+                              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                                {sub.items.map((item, i) => (
+                                  <motion.div
+                                    key={item.title + i}
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.25, delay: i * 0.04 }}
+                                    className="group"
+                                  >
+                                    <div className="rounded-xl overflow-hidden border border-border bg-background">
+                                      <div className="aspect-square overflow-hidden bg-muted">
+                                        <img
+                                          src={item.image}
+                                          alt={item.title}
+                                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                          loading="lazy"
+                                        />
+                                      </div>
+                                      <div className="px-3 py-2">
+                                        <h5 className="text-xs sm:text-sm font-bold text-foreground text-center">
+                                          {item.title}
+                                        </h5>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            ) : (cat.id === "temperature" || cat.id === "circulation") ? (
                               /* Text-only clean list */
                               <div className="space-y-3">
                                 {sub.items.map((item, i) => (
