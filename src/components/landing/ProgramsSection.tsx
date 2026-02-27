@@ -69,8 +69,8 @@ const categories: Category[] = [
       {
         label: "체액면역",
         items: [
-          { title: "글루타민 주사", desc: "간세포 재생을 촉진하고 항암 치료로 인한 간 손상을 완화", image: healImmunity6 },
-          { title: "면역플러스", desc: "황기 부정단 처방으로 면역기능 증강, 골수기능 개선 및 종양 억제", image: healImmunity7 },
+          { title: "글루타민 주사", desc: "간세포 재생을 촉진하고 항암 치료로 인한 간 손상을 완화", image: treatGlutamine },
+          { title: "면역플러스", desc: "황기 부정단 처방으로 면역기능 증강, 골수기능 개선 및 종양 억제", image: treatHerbalImmune },
         ],
       },
     ],
