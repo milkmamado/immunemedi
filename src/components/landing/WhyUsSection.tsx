@@ -1,24 +1,26 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, Leaf, Globe } from "lucide-react";
-import { type LucideIcon } from "lucide-react";
 
-const strengths: { icon: LucideIcon; title: React.ReactNode; locations?: string; subtitle?: string; desc: string }[] = [
+import whyBranches from "@/assets/why-branches.jpg";
+import whyIntegrative from "@/assets/why-integrative.jpg";
+import whyInternational from "@/assets/why-international.jpg";
+
+const strengths: { image: string; title: React.ReactNode; locations?: string; subtitle?: string; desc: string }[] = [
   {
-    icon: Building2,
+    image: whyBranches,
     title: <>서울·경기 <span className="font-sans">4</span>개 지점 운영</>,
     locations: "강서 · 광명 · 신촌 · 성동",
     desc: "검증된 네트워크, 탄탄한 임상 인프라",
   },
   {
-    icon: Leaf,
+    image: whyIntegrative,
     title: "한방·양방 통합 케어",
     subtitle: "한 병원에서 모두 가능",
     desc: "한약 · 침 · 온열치료 · 고압산소 · 도수치료",
   },
   {
-    icon: Globe,
+    image: whyInternational,
     title: "해외 환자 전담 시스템",
     subtitle: "원스톱 서비스",
     desc: "통역 · 전담의 · 픽업 · 숙박 — 모두 원스톱으로",
@@ -57,21 +59,28 @@ const WhyUsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="bg-card rounded-2xl p-8 shadow-card hover:shadow-elevated transition-shadow duration-300 border border-border"
+              className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-shadow duration-300 border border-border"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
-                <s.icon className="w-7 h-7 text-gold" />
+              <div className="w-full h-48 overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={typeof s.title === "string" ? s.title : ""}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
-              <h3 className="font-serif text-xl font-bold text-foreground mb-2">
-                {s.title}
-              </h3>
-              {s.locations && (
-                <p className="text-sm font-medium text-gold mb-3">{s.locations}</p>
-              )}
-              {s.subtitle && (
-                <p className="text-sm font-medium text-gold mb-3">{s.subtitle}</p>
-              )}
-              <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
+              <div className="p-8">
+                <h3 className="font-serif text-xl font-bold text-foreground mb-2">
+                  {s.title}
+                </h3>
+                {s.locations && (
+                  <p className="text-sm font-medium text-gold mb-3">{s.locations}</p>
+                )}
+                {s.subtitle && (
+                  <p className="text-sm font-medium text-gold mb-3">{s.subtitle}</p>
+                )}
+                <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
