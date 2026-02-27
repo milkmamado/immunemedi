@@ -50,7 +50,7 @@ const EvidenceSection = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="text-center p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10"
             >
-              <div className="text-4xl sm:text-5xl font-serif font-bold text-gold mb-2">
+              <div className="text-4xl sm:text-5xl font-sans font-bold text-gold mb-2">
                 {s.value}
               </div>
               <div className="font-semibold text-primary-foreground mb-1">{s.label}</div>
