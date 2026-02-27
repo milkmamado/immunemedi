@@ -8,6 +8,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import treatHyperthermia from "@/assets/treat-hyperthermia.jpg";
 import treatHbot from "@/assets/treat-hbot.jpg";
 import treatManual from "@/assets/treat-manual.jpg";
+import treatImmune from "@/assets/treat-immune.jpg";
 
 /* ── Treatment data ── */
 
@@ -22,7 +23,7 @@ const westernTreatments: Treatment[] = [
   { title: "고주파 온열 암치료", desc: "42˚C 이상의 고열을 발생시켜 암 종괴 부위와 암세포를 선택적으로 직접 괴사시키는 고주파 항암 치료법", image: treatHyperthermia },
   { title: "고압 산소치료", desc: "암 조직에 고밀도 산소를 흡입하여 저산소 상태를 개선. 널리 활용되는 치료로써 에너지의 효율성을 높임", image: treatHbot },
   { title: "림프순환 / 재활치료", desc: "림프계 손상으로 인한 증상을 치료. 림프액의 유동성을 증가시켜 면역력을 강화시키고 부종을 감소", image: treatManual },
-  { title: "싸이모신알파1 요법", desc: "면역방어 기능을 높인 항암효과. 면역조절작용을 통해 T세포 및 NK세포를 활성화시켜 암세포를 파괴", image: "/placeholder.svg" },
+  { title: "싸이모신알파1 요법", desc: "면역방어 기능을 높인 항암효과. 면역조절작용을 통해 T세포 및 NK세포를 활성화시켜 암세포를 파괴", image: treatImmune },
   { title: "미슬토 요법", desc: "암세포의 증식을 억제시켜 사멸에 도움, 항암물질 및 면역기능을 증가시키는 물질 함유", image: "/placeholder.svg" },
   { title: "항암면역증강제", desc: "면역세포 활성화를 통해 항암 효과를 보조하고 재발 위험을 감소", image: "/placeholder.svg" },
   { title: "글루타민 요법", desc: "면역세포의 기능 향상 및 단백질 합성을 통해 근손실을 예방하며 항암치료 부작용에 효과", image: "/placeholder.svg" },
