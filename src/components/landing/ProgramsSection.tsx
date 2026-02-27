@@ -26,7 +26,7 @@ interface Treatment {
 
 const westernTreatments: Treatment[] = [
   { title: "고주파 온열 암치료", desc: "42˚C 이상 고열로 암세포를 선택적으로 괴사시키는 항암 치료법", image: treatHyperthermia },
-  { title: "고압 산소치료", desc: "고밀도 산소 흡입으로 저산소 상태를 개선하고 에너지 효율을 높임", image: treatHbot },
+  { title: "고압 산소치료", desc: "고밀도 산소로 암 조직의 저산소 환경을 개선하여 항암 치료 효과를 증진", image: treatHbot },
   { title: "림프순환 / 재활치료", desc: "림프액 유동성을 증가시켜 면역력을 강화하고 부종을 감소", image: treatManual },
   { title: "싸이모신알파1 요법", desc: "T세포·NK세포를 활성화시켜 면역방어 기능을 높이는 항암 요법", image: treatImmune },
   { title: "미슬토 요법", desc: "암세포 증식을 억제하고 면역기능을 증가시키는 항암 보조 요법", image: treatMistletoe },
