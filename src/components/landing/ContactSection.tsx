@@ -15,7 +15,6 @@ const messengerOptions = [
 const programOptions = [
   "암 집중 치료",
   "면역력 강화",
-  "디톡스 프로그램",
   "만성질환 관리",
   "수술 후 회복",
   "기타",
