@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getImageSettings } from "./ImageEditorOverlay";
 
 interface ImageModalProps {
-  images: { src: string; alt: string; caption?: string }[];
+  images: { src?: string; alt: string; caption?: string; title?: string }[];
   initialIndex?: number;
   isOpen: boolean;
   onClose: () => void;
