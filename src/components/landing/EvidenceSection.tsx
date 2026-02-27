@@ -206,13 +206,14 @@ const EvidenceSection = () => {
                 </span>
               </div>
               <h4 className="font-serif text-xl sm:text-2xl font-bold text-primary-foreground mb-3">
-                한·양방 협진, 생존율을 높입니다
+                한방+항암 병행치료, 생존율을 높입니다
               </h4>
               <p className="text-primary-foreground/70 leading-relaxed mb-4">
                 말기 위암 수술 후 한방 치료를 병행한 환자군에서 생존율이 유의미하게 높아졌다는 임상 연구 결과가 있습니다.
               </p>
-              <p className="text-sm text-primary-foreground/40 italic">
-                ※ Rao X.Q. et al. (1994). CJITWM, 14(6), 366.
+              <p className="text-sm text-primary-foreground/40 italic leading-relaxed">
+                ※ 한약의 안정성 및 효과가 입증된 자료입니다.<br />
+                참고논문 Rao. X.Q. et al, (1994), The long-term effects of shen xue tang combined with chemotherapy on mid-and late-stage stomach cancer. CJITWM, 14(6), 366.
               </p>
             </div>
           </motion.div>
