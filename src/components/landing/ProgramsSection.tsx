@@ -12,6 +12,7 @@ import healImmunity7 from "@/assets/heal-immunity-7.png";
 import healTemperature from "@/assets/heal-temperature.jpg";
 import healHyperthermiaDevice from "@/assets/heal-hyperthermia-device.jpg";
 import healCirculation from "@/assets/heal-circulation.jpg";
+import healLymphDevice from "@/assets/heal-lymph-device.jpg";
 import healResist1 from "@/assets/heal-resist-1.png";
 import healResist2 from "@/assets/heal-resist-2.png";
 import healResist3 from "@/assets/heal-resist-3.png";
@@ -263,6 +264,19 @@ const ProgramsSection = () => {
                             <img
                               src={healHyperthermiaDevice}
                               alt="고주파온열암치료 장비"
+                              className="w-full h-auto"
+                              width={592}
+                              height={336}
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
+                        {/* Circulation hero image */}
+                        {cat.id === "circulation" && (
+                          <div className="rounded-xl overflow-hidden max-w-[592px]">
+                            <img
+                              src={healLymphDevice}
+                              alt="림프순환 치료"
                               className="w-full h-auto"
                               width={592}
                               height={336}
