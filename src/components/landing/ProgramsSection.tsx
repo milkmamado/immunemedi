@@ -82,7 +82,13 @@ const categories: Category[] = [
       {
         label: "중심체온상승",
         items: [
-          { title: "고주파온열암치료", desc: "고온 환경에서 암 조직을 민감하게 만들고 면역세포를 활성화하여 항암 면역 반응 강화", image: healTemperature },
+          { title: "고주파온열암치료", desc: "고온 환경에서 암 조직은 더 민감해지고, 면역세포가 활성화되어 종양 미세환경에서 항암 면역 반응이 강화됩니다. 항암제 투여와 고주파온열 치료를 병행할 경우, 생존기간이 유의미하게 증가했다는 연구결과가 존재합니다.", image: healTemperature },
+        ],
+      },
+      {
+        label: "온열요법",
+        items: [
+          { title: "적외선온열요법", desc: "적외선 에너지로 심부 체온을 올려 혈액순환과 면역 활성을 촉진합니다.", image: healTemperature },
         ],
       },
     ],
