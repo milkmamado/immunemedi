@@ -179,7 +179,7 @@ const ProgramsSection = () => {
                       const imgSrc = saved.src || t.image;
                       return (
                         <div
-                          className="relative h-36 overflow-hidden bg-muted cursor-pointer"
+                          className="relative aspect-square overflow-hidden bg-muted cursor-pointer"
                           onClick={() => setEditingKey(t.title)}
                           title="클릭하여 이미지 편집"
                         >
