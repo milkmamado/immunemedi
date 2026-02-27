@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Shield, Thermometer, RefreshCw, Zap, Apple } from "lucide-react";
+import { Shield, Thermometer, RefreshCw, Zap, Apple, ChevronDown } from "lucide-react";
 
 import healImmunity1 from "@/assets/heal-immunity-1.png";
 import healImmunity2 from "@/assets/heal-immunity-2.png";
@@ -23,8 +23,8 @@ import healNutrition5 from "@/assets/heal-nutrition-5.jpg";
 import healNutrition6 from "@/assets/heal-nutrition-6.jpg";
 import healNutrition7 from "@/assets/heal-nutrition-7.jpg";
 import healNutrition8 from "@/assets/heal-nutrition-8.jpg";
+import healDiagram from "@/assets/heal-diagram.svg";
 
-/* ── Treatment item ── */
 interface Treatment {
   title: string;
   desc: string;
@@ -41,8 +41,7 @@ interface Category {
   label: string;
   labelEn: string;
   icon: React.ElementType;
-  color: string;
-  heroImage?: string;
+  desc: string;
   subCategories: SubCategory[];
 }
 
@@ -52,7 +51,7 @@ const categories: Category[] = [
     label: "면역",
     labelEn: "Immunity",
     icon: Shield,
-    color: "text-blue-600",
+    desc: "면역세포 활성화를 통한 암세포 제거 및 재발 방지",
     subCategories: [
       {
         label: "세포면역",
@@ -78,8 +77,7 @@ const categories: Category[] = [
     label: "체온",
     labelEn: "Temperature",
     icon: Thermometer,
-    color: "text-red-500",
-    heroImage: healTemperature,
+    desc: "심부 체온 상승을 통한 면역력 강화 및 암세포 사멸 유도",
     subCategories: [
       {
         label: "중심체온상승",
@@ -100,8 +98,7 @@ const categories: Category[] = [
     label: "순환",
     labelEn: "Circulation",
     icon: RefreshCw,
-    color: "text-emerald-500",
-    heroImage: healCirculation,
+    desc: "림프 및 혈액 순환 촉진으로 면역 기능 최적화",
     subCategories: [
       {
         label: "림프순환",
@@ -123,7 +120,7 @@ const categories: Category[] = [
     label: "저항성",
     labelEn: "Resistibility",
     icon: Zap,
-    color: "text-amber-500",
+    desc: "항산화·항노화 작용으로 암에 대한 신체 저항력 향상",
     subCategories: [
       {
         label: "항산화 항노화",
@@ -141,7 +138,7 @@ const categories: Category[] = [
     label: "영양",
     labelEn: "Nutrition",
     icon: Apple,
-    color: "text-green-600",
+    desc: "암종별 맞춤 치료식과 영양 관리로 회복력 극대화",
     subCategories: [
       {
         label: "치료식이",
@@ -168,9 +165,9 @@ const categories: Category[] = [
 const ProgramsSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeId, setActiveId] = useState("immunity");
+  const [openId, setOpenId] = useState<string | null>("immunity");
 
-  const active = categories.find((c) => c.id === activeId)!;
+  const toggle = (id: string) => setOpenId(openId === id ? null : id);
 
   return (
     <section id="programs" className="py-24 lg:py-32 bg-background" ref={ref}>
@@ -188,112 +185,167 @@ const ProgramsSection = () => {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4">
             그렇다면 어떤 치료가 필요할까요?
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             면역 · 체온 · 순환 · 저항성 · 영양, 5가지 핵심 축으로 구성된 통합 면역암치료
           </p>
         </motion.div>
 
-        {/* 5-pillar tab buttons */}
+        {/* 5-pillar visual row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex justify-center gap-2 sm:gap-4 mb-14 flex-wrap"
+          className="grid grid-cols-5 gap-2 sm:gap-3 mb-14 max-w-3xl mx-auto"
         >
           {categories.map((cat) => {
             const Icon = cat.icon;
-            const isActive = activeId === cat.id;
+            const isOpen = openId === cat.id;
             return (
               <button
                 key={cat.id}
-                onClick={() => setActiveId(cat.id)}
-                className={`group flex flex-col items-center gap-2 px-5 py-4 rounded-2xl text-sm font-medium transition-all duration-300 border min-w-[80px] ${
-                  isActive
-                    ? "bg-primary text-primary-foreground border-primary shadow-gold scale-105"
-                    : "bg-card text-foreground border-border hover:border-gold/40 hover:shadow-soft"
+                onClick={() => toggle(cat.id)}
+                className={`flex flex-col items-center gap-1.5 sm:gap-2 py-3 sm:py-4 rounded-xl text-center transition-all duration-300 ${
+                  isOpen
+                    ? "bg-primary text-primary-foreground shadow-gold"
+                    : "bg-card text-foreground border border-border hover:border-gold/40"
                 }`}
               >
-                <Icon className={`w-6 h-6 ${isActive ? "text-primary-foreground" : cat.color}`} />
-                <span className="font-bold">{cat.label}</span>
-                <span className="text-[10px] opacity-60 uppercase tracking-wider">{cat.labelEn}</span>
+                <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${isOpen ? "" : "text-muted-foreground"}`} />
+                <span className="text-xs sm:text-sm font-bold">{cat.label}</span>
+                <span className="text-[9px] sm:text-[10px] opacity-50 uppercase tracking-wider leading-none">
+                  {cat.labelEn}
+                </span>
               </button>
             );
           })}
         </motion.div>
 
-        {/* Active category content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeId}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.35 }}
-          >
-            {/* Hero image for temperature / circulation */}
-            {active.heroImage && (
-              <div className="relative rounded-2xl overflow-hidden mb-10 max-w-4xl mx-auto aspect-[21/9]">
-                <img
-                  src={active.heroImage}
-                  alt={active.label}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 via-foreground/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6 sm:p-8">
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-background">
-                    {active.label}
-                  </h3>
-                  <p className="text-background/70 text-sm mt-1">{active.labelEn}</p>
-                </div>
-              </div>
-            )}
+        {/* Accordion list */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="max-w-5xl mx-auto space-y-3"
+        >
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            const isOpen = openId === cat.id;
 
-            {/* Sub-categories */}
-            {active.subCategories.map((sub, si) => (
-              <div key={sub.label} className={si > 0 ? "mt-10" : ""}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-1 h-6 rounded-full bg-gold" />
-                  <h3 className="font-serif text-xl font-bold text-foreground">{sub.label}</h3>
-                </div>
+            return (
+              <div
+                key={cat.id}
+                className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
+                  isOpen
+                    ? "border-gold/40 shadow-card bg-card"
+                    : "border-border bg-card/50 hover:border-gold/20"
+                }`}
+              >
+                {/* Accordion header */}
+                <button
+                  onClick={() => toggle(cat.id)}
+                  className="w-full flex items-center gap-4 px-5 sm:px-7 py-5 sm:py-6 text-left transition-colors"
+                >
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl transition-colors ${
+                      isOpen
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline gap-2">
+                      <h3 className="font-serif text-lg sm:text-xl font-bold text-foreground">
+                        {cat.label}
+                      </h3>
+                      <span className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">
+                        {cat.labelEn}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 truncate">
+                      {cat.desc}
+                    </p>
+                  </div>
+                  <ChevronDown
+                    className={`w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-                <div className={`grid gap-4 ${
-                  sub.items.length <= 2
-                    ? "sm:grid-cols-2 max-w-3xl"
-                    : sub.items.length <= 3
-                      ? "sm:grid-cols-3 max-w-5xl"
-                      : "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                }`}>
-                  {sub.items.map((item, i) => (
+                {/* Accordion body */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
                     <motion.div
-                      key={item.title + i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: i * 0.05 }}
-                      className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/40 transition-all duration-300 shadow-soft hover:shadow-card"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="overflow-hidden"
                     >
-                      <div className="aspect-square overflow-hidden bg-muted">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="px-4 py-3">
-                        <h4 className="font-serif text-sm font-bold text-foreground leading-tight">
-                          {item.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground leading-snug mt-1 line-clamp-2">
-                          {item.desc}
-                        </p>
+                      <div className="px-5 sm:px-7 pb-6 sm:pb-8 pt-2 space-y-8">
+                        {cat.subCategories.map((sub) => (
+                          <div key={sub.label}>
+                            {/* Subcategory label */}
+                            <div className="flex items-center gap-2.5 mb-4">
+                              <div className="w-0.5 h-5 rounded-full bg-gold" />
+                              <h4 className="text-sm sm:text-base font-bold text-foreground">
+                                {sub.label}
+                              </h4>
+                            </div>
+
+                            {/* Treatment grid */}
+                            <div
+                              className={`grid gap-3 ${
+                                sub.items.length === 1
+                                  ? "grid-cols-1 max-w-xs"
+                                  : sub.items.length === 2
+                                    ? "grid-cols-2 max-w-lg"
+                                    : sub.items.length === 3
+                                      ? "grid-cols-3 max-w-2xl"
+                                      : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+                              }`}
+                            >
+                              {sub.items.map((item, i) => (
+                                <motion.div
+                                  key={item.title + i}
+                                  initial={{ opacity: 0, y: 12 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.25, delay: i * 0.04 }}
+                                  className="group"
+                                >
+                                  <div className="rounded-xl overflow-hidden border border-border bg-background">
+                                    <div className="aspect-square overflow-hidden bg-muted">
+                                      <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        loading="lazy"
+                                      />
+                                    </div>
+                                    <div className="px-3 py-2.5">
+                                      <h5 className="text-xs sm:text-sm font-bold text-foreground leading-tight">
+                                        {item.title}
+                                      </h5>
+                                      <p className="text-[11px] text-muted-foreground leading-snug mt-1 line-clamp-2">
+                                        {item.desc}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </motion.div>
-                  ))}
-                </div>
+                  )}
+                </AnimatePresence>
               </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
