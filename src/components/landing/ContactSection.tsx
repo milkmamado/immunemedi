@@ -67,6 +67,7 @@ const ContactSection = () => {
 
     setIsSubmitting(true);
     try {
+      if (!supabase) throw new Error("Service unavailable");
       const { error } = await supabase
         .from("consultation_inquiries")
         .insert({
