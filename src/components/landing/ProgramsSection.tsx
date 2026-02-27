@@ -41,10 +41,10 @@ const orientalTreatments: Treatment[] = [
 ];
 
 const diagnostics: Treatment[] = [
-  { title: "종양표지자 검사", desc: "혈액에서 암세포 존재 유무를 감별하고 종양 크기를 추정", image: "/placeholder.svg" },
-  { title: "비타민 검사", desc: "B1·B6·B12·C·D 및 셀레늄 수치를 종합 분석", image: "/placeholder.svg" },
-  { title: "항암호중구 수치 검사", desc: "절대 호중구 수를 파악하여 면역 체계 이상 유무 진단", image: "/placeholder.svg" },
-  { title: "NK 활성도 검사", desc: "NK세포(자연살해 세포)의 활성도를 측정하여 현 면역 상태 진단", image: "/placeholder.svg" },
+  { title: "종양표지자 검사", icon: ClipboardCheck, desc: "혈액이나 다른 체액에서 측정, 암세포의 존재 유무를 결정 또는 정상조직과 암 조직을 감별하는 데 이용하는 검사. 종양의 임상적 병기를 결정하거나 크기를 추정할 때 활용" },
+  { title: "NK 활성도 검사", icon: Microscope, desc: "혈액 내 NK세포(자연살해 세포)를 인위적으로 활성화시켜 활성도를 측정하는 검사. 현 상태를 진단" },
+  { title: "항암호중구 수치 검사", icon: Stethoscope, desc: "항암 중, 항암제 치료 전 절대 호중구 수를 파악하여 면역 체계의 이상 유무를 진단하는 혈액 검사" },
+  { title: "비타민 검사", icon: TestTube, desc: "일반적인 비타민D 검사를 비롯하여 신경염 회복 및 신경세포 재생에 필수적인 비타민 B1, B6, B12와 면역력에 필수적인 비타민C, 대표적인 항산화제인 셀레늄 검사 진행" },
 ];
 
 const lifeCare: Treatment[] = [
