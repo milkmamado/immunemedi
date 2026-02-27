@@ -115,22 +115,6 @@ const EvidenceSection = () => {
                   암 치료의 모든 단계, 함께합니다
                 </h3>
               </div>
-              <div className="hidden sm:flex gap-2">
-                <button
-                  onClick={() => scroll("left")}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-background transition-colors"
-                  aria-label="이전"
-                >
-                  <ChevronLeft className="w-5 h-5 text-foreground" />
-                </button>
-                <button
-                  onClick={() => scroll("right")}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-background transition-colors"
-                  aria-label="다음"
-                >
-                  <ChevronRight className="w-5 h-5 text-foreground" />
-                </button>
-              </div>
             </div>
 
             <div
