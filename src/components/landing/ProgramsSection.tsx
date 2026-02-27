@@ -259,11 +259,13 @@ const ProgramsSection = () => {
                       <div className="px-5 sm:px-7 pb-6 sm:pb-8 pt-2 space-y-8">
                         {/* Temperature hero image */}
                         {cat.id === "temperature" && (
-                          <div className="rounded-xl overflow-hidden">
+                          <div className="rounded-xl overflow-hidden max-w-[592px]">
                             <img
                               src={healHyperthermiaDevice}
                               alt="고주파온열암치료 장비"
-                              className="w-full"
+                              className="w-full h-auto"
+                              width={592}
+                              height={336}
                               loading="lazy"
                             />
                           </div>
